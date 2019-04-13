@@ -59,7 +59,7 @@ OpenPiton Design Benchmark adapted from [OpenPiton](https://github.com/Princeton
 
 ### Configuration naming convention
 
-`<module_name>__<attr1_id>_<attr1_val1>_..._<attr1_valM>__...__<attrN_id>_<attrN_val1>_..._<attrN_valM>`
+`<attr1_id>_<attr1_val1>_..._<attr1_valM>__...__<attrN_id>_<attrN_val1>_..._<attrN_valM>`
 
 | Attribute | Value 1  | Value 2       |
 |-----------|----------|---------------|
