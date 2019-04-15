@@ -7,7 +7,7 @@ OpenPiton Design Benchmark adapted from [OpenPiton](https://github.com/Princeton
 - [Follow us on Twitter!](https://www.twitter.com/openpiton)
 - Get help from others by joining our [Google Group](https://groups.google.com/group/openpiton)
 - Keep up-to-date with the latest releases at the [OpenPiton Blog](https://openpiton-blog.princeton.edu)
-- [Floorplan and sdc files](#Floorplan and sdc files)
+- [Floorplan and sdc files](#floorplan-and-sdc-files)
 
 ## Benchmark
 
