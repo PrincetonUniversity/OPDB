@@ -47,7 +47,7 @@ The top module of dynamic node depends on the network topology:
 
 | Topology | Top module                 |
 |----------|----------------------------|
-| 2d_mesh  | dynamic_node_top_wrap      |
+| 2dmesh   | dynamic_node_top_wrap      |
 | xbar     | dynamic_node_top_wrap_para |
 
 ## Configuration naming convention
