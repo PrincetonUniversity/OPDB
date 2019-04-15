@@ -17,8 +17,10 @@ top level module for each pickled module, and which attributes affect each modul
 
 | Module name        | Top module                    | Topology | L1-I | L1-D | L1.5 | L2 |
 |--------------------|--------------------------     |----------|------|------|------|----|
+| chip               | chip                          | X        | X    | X    | X    | X  |
 | chip_bridge        | chip_bridge                   |          |      |      |      |    |
 | dynamic_node       | [*](#dynamic-node-top-module) | X        |      |      |      |    |
+| fpga_bridge_rcv_32 | fpga_bridge_rcv_32            |          |      |      |      |    |
 | fpu                | fpu                           |          |      |      |      |    |
 | ifu_esl            | sparc_ifu_esl                 |          |      |      |      |    |
 | ifu_esl_counter    | sparc_ifu_esl_counter         |          |      |      |      |    |
@@ -38,9 +40,7 @@ top level module for each pickled module, and which attributes affect each modul
 | sparc_lsu          | lsu                           |          |      | X    |      |    |
 | sparc_mul          | sparc_mul_top_nospu_wrap      |          |      |      |      |    |
 | sparc_tlu          | tlu_nospu_wrap                |          |      |      |      |    |
-| fpga_bridge_rcv_32 | fpga_bridge_rcv_32            |          |      |      |      |    |
 | tile               | tile                          | X        | X    | X    | X    | X  |
-| chip               | chip                          | X        | X    | X    | X    | X  |
 
 ### Dynamic node top module
 The top module of dynamic node depends on the network topology:
@@ -58,11 +58,11 @@ The top module of dynamic node depends on the network topology:
 
 Attribute            | Attribute ID | Value 1  | Value 2       |
 ---------------------|--------------|----------|---------------|
-Network topology     | NETWORK      | topology | -             |
 L1 data cache        | L1D          | size     | associativity |
 L1 instruction cache | L1I          | size     | associativity |
 L1.5 cache           | L15          | size     | associativity |
 L2 cache             | L2           | size     | associativity |
+Network topology     | NETWORK      | topology | -             |
 
 
 ### Organization
