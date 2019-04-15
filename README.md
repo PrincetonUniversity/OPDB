@@ -15,33 +15,40 @@ The following table presents which modules from OpenPiton are included on OPDB, 
 top level module for each pickled module, and which attributes affect each module.
 
 
-| Module name        | Top module               | Topology | L1-I | L1-D | L1.5 | L2 |
-|--------------------|--------------------------|----------|------|------|------|----|
-| chip_bridge        | chip_bridge              |          |      |      |      |    |
-| dynamic_node       |                          | X        |      |      |      |    |
-| fpu                | fpu                      |          |      |      |      |    |
-| ifu_esl            | sparc_ifu_esl            |          |      |      |      |    |
-| ifu_esl_counter    | sparc_ifu_esl_counter    |          |      |      |      |    |
-| ifu_esl_fsm        | sparc_ifu_esl_fsm        |          |      |      |      |    |
-| ifu_esl_htsm       | sparc_ifu_esl_htsm       |          |      |      |      |    |
-| ifu_esl_lfsr       | sparc_ifu_esl_lfsr       |          |      |      |      |    |
-| ifu_esl_rtsm       | sparc_ifu_esl_rtsm       |          |      |      |      |    |
-| ifu_esl_shiftreg   | sparc_ifu_esl_shiftreg   |          |      |      |      |    |
-| ifu_esl_stsm       | sparc_ifu_esl_stsm       |          |      |      |      |    |
-| l15                | l15                      | X        |      | X    | X    | X  |
-| l2                 | l2                       | X        |      |      | X    | X  |
-| pico               | picorv32                 |          |      |      |      |    |
-| sparc_core         | sparc_core               |          | X    | X    |      |    |
-| sparc_exu          | sparc_exu_wrap           |          |      |      |      |    |
-| sparc_ffu          | sparc_ffu_nospu_wrap     |          |      |      |      |    |
-| sparc_ifu          | sparc_ifu                |          | X    |      |      |    |
-| sparc_lsu          | lsu                      |          |      | X    |      |    |
-| sparc_mul          | sparc_mul_top_nospu_wrap |          |      |      |      |    |
-| sparc_srams        |                          |          | X    | X    |      |    |
-| sparc_tlu          | tlu_nospu_wrap           |          |      |      |      |    |
-| fpga_bridge_rcv_32 | fpga_bridge_rcv_32       |          |      |      |      |    |
-| tile               | tile                     | X        | X    | X    | X    | X  |
-| chip               | chip                     | X        | X    | X    | X    | X  |
+| Module name        | Top module                    | Topology | L1-I | L1-D | L1.5 | L2 |
+|--------------------|--------------------------     |----------|------|------|------|----|
+| chip_bridge        | chip_bridge                   |          |      |      |      |    |
+| dynamic_node       | [*](#dynamic-node-top-module) | X        |      |      |      |    |
+| fpu                | fpu                           |          |      |      |      |    |
+| ifu_esl            | sparc_ifu_esl                 |          |      |      |      |    |
+| ifu_esl_counter    | sparc_ifu_esl_counter         |          |      |      |      |    |
+| ifu_esl_fsm        | sparc_ifu_esl_fsm             |          |      |      |      |    |
+| ifu_esl_htsm       | sparc_ifu_esl_htsm            |          |      |      |      |    |
+| ifu_esl_lfsr       | sparc_ifu_esl_lfsr            |          |      |      |      |    |
+| ifu_esl_rtsm       | sparc_ifu_esl_rtsm            |          |      |      |      |    |
+| ifu_esl_shiftreg   | sparc_ifu_esl_shiftreg        |          |      |      |      |    |
+| ifu_esl_stsm       | sparc_ifu_esl_stsm            |          |      |      |      |    |
+| l15                | l15                           | X        |      | X    | X    | X  |
+| l2                 | l2                            | X        |      |      | X    | X  |
+| pico               | picorv32                      |          |      |      |      |    |
+| sparc_core         | sparc_core                    |          | X    | X    |      |    |
+| sparc_exu          | sparc_exu_wrap                |          |      |      |      |    |
+| sparc_ffu          | sparc_ffu_nospu_wrap          |          |      |      |      |    |
+| sparc_ifu          | sparc_ifu                     |          | X    |      |      |    |
+| sparc_lsu          | lsu                           |          |      | X    |      |    |
+| sparc_mul          | sparc_mul_top_nospu_wrap      |          |      |      |      |    |
+| sparc_tlu          | tlu_nospu_wrap                |          |      |      |      |    |
+| fpga_bridge_rcv_32 | fpga_bridge_rcv_32            |          |      |      |      |    |
+| tile               | tile                          | X        | X    | X    | X    | X  |
+| chip               | chip                          | X        | X    | X    | X    | X  |
+
+### Dynamic node top module
+The top module of dynamic node depends on the network topology:
+
+| Topology | Top module                 |
+|----------|----------------------------|
+| 2d_mesh  | dynamic_node_top_wrap      |
+| xbar     | dynamic_node_top_wrap_para |
 
 ## Configuration naming convention
 
