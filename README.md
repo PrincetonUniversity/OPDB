@@ -15,32 +15,32 @@ The following table presents which modules from OpenPiton are included on OPDB, 
 top level module for each pickled module, and which attributes affect each module.
 
 
-| Module name        | Top module                    | Topology | L1-I | L1-D | L1.5 | L2 |
-|--------------------|--------------------------     |----------|------|------|------|----|
-| chip               | chip                          | X        | X    | X    | X    | X  |
-| chip_bridge        | chip_bridge                   |          |      |      |      |    |
-| dynamic_node       | [*](#dynamic-node-top-module) | X        |      |      |      |    |
-| fpga_bridge_rcv_32 | fpga_bridge_rcv_32            |          |      |      |      |    |
-| fpu                | fpu                           |          |      |      |      |    |
-| ifu_esl            | sparc_ifu_esl                 |          |      |      |      |    |
-| ifu_esl_counter    | sparc_ifu_esl_counter         |          |      |      |      |    |
-| ifu_esl_fsm        | sparc_ifu_esl_fsm             |          |      |      |      |    |
-| ifu_esl_htsm       | sparc_ifu_esl_htsm            |          |      |      |      |    |
-| ifu_esl_lfsr       | sparc_ifu_esl_lfsr            |          |      |      |      |    |
-| ifu_esl_rtsm       | sparc_ifu_esl_rtsm            |          |      |      |      |    |
-| ifu_esl_shiftreg   | sparc_ifu_esl_shiftreg        |          |      |      |      |    |
-| ifu_esl_stsm       | sparc_ifu_esl_stsm            |          |      |      |      |    |
-| l15                | l15                           | X        |      | X    | X    | X  |
-| l2                 | l2                            | X        |      |      | X    | X  |
-| pico               | picorv32                      |          |      |      |      |    |
-| sparc_core         | sparc_core                    |          | X    | X    |      |    |
-| sparc_exu          | sparc_exu_wrap                |          |      |      |      |    |
-| sparc_ffu          | sparc_ffu_nospu_wrap          |          |      |      |      |    |
-| sparc_ifu          | sparc_ifu                     |          | X    |      |      |    |
-| sparc_lsu          | lsu                           |          |      | X    |      |    |
-| sparc_mul          | sparc_mul_top_nospu_wrap      |          |      |      |      |    |
-| sparc_tlu          | tlu_nospu_wrap                |          |      |      |      |    |
-| tile               | tile                          | X        | X    | X    | X    | X  |
+| Module name        | Top module                    | X                  | Y                  | Topology           | L1-I               | L1-D               | L1.5               | L2                 |
+|--------------------|-------------------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|--------------------|
+| chip               | chip                          | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| chip_bridge        | chip_bridge                   |                    |                    |                    |                    |                    |                    |                    |
+| dynamic_node       | [*](#dynamic-node-top-module) |                    |                    | :heavy_check_mark: |                    |                    |                    |                    |
+| fpga_bridge_rcv_32 | fpga_bridge_rcv_32            |                    |                    |                    |                    |                    |                    |                    |
+| fpu                | fpu                           |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl            | sparc_ifu_esl                 |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_counter    | sparc_ifu_esl_counter         |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_fsm        | sparc_ifu_esl_fsm             |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_htsm       | sparc_ifu_esl_htsm            |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_lfsr       | sparc_ifu_esl_lfsr            |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_rtsm       | sparc_ifu_esl_rtsm            |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_shiftreg   | sparc_ifu_esl_shiftreg        |                    |                    |                    |                    |                    |                    |                    |
+| ifu_esl_stsm       | sparc_ifu_esl_stsm            |                    |                    |                    |                    |                    |                    |                    |
+| l15                | l15_wrap                      |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| l2                 | l2                            |                    |                    | :heavy_check_mark: |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+| pico               | picorv32                      |                    |                    |                    |                    |                    |                    |                    |
+| sparc_core         | sparc_core                    |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |                    |                    |
+| sparc_exu          | sparc_exu_wrap                |                    |                    |                    |                    |                    |                    |                    |
+| sparc_ffu          | sparc_ffu_nospu_wrap          |                    |                    |                    |                    |                    |                    |                    |
+| sparc_ifu          | sparc_ifu                     |                    |                    |                    | :heavy_check_mark: |                    |                    |                    |
+| sparc_lsu          | lsu                           |                    |                    |                    |                    | :heavy_check_mark: |                    |                    |
+| sparc_mul          | sparc_mul_top_nospu_wrap      |                    |                    |                    |                    |                    |                    |                    |
+| sparc_tlu          | tlu_nospu_wrap                |                    |                    |                    |                    |                    |                    |                    |
+| tile               | tile                          |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
 
 ### Dynamic node top module
 The top module of dynamic node depends on the network topology:
@@ -56,13 +56,15 @@ The top module of dynamic node depends on the network topology:
 
 `<attr1_id>_<attr1_val1>_..._<attr1_valM>__...__<attrN_id>_<attrN_val1>_..._<attrN_valM>`
 
-Attribute            | Attribute ID | Value 1  | Value 2       |
----------------------|--------------|----------|---------------|
-L1 data cache        | L1D          | size     | associativity |
-L1 instruction cache | L1I          | size     | associativity |
-L1.5 cache           | L15          | size     | associativity |
-L2 cache             | L2           | size     | associativity |
-Network topology     | NETWORK      | topology | -             |
+Attribute              | Attribute ID | Value 1  | Value 2       |
+-----------------------|--------------|----------|---------------|
+L1 data cache          | L1D          | size     | associativity |
+L1 instruction cache   | L1I          | size     | associativity |
+L1.5 cache             | L15          | size     | associativity |
+L2 cache               | L2           | size     | associativity |
+Network topology       | NETWORK      | topology | -             |
+# tiles in X dimension | X            | width    | -             |
+# tiles in y dimension | Y            | width    | -             |
 
 
 ### Organization
