@@ -63,8 +63,8 @@ L1 instruction cache   | L1I          | size     | associativity |
 L1.5 cache             | L15          | size     | associativity |
 L2 cache               | L2           | size     | associativity |
 Network topology       | NETWORK      | topology | -             |
-# tiles in X dimension | X            | width    | -             |
-# tiles in y dimension | Y            | width    | -             |
+\# tiles in X dimension | X            | width    | -             |
+\# tiles in y dimension | Y            | width    | -             |
 
 
 ### Organization
