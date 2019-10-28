@@ -2697,1927 +2697,6 @@ endmodule
 
 
 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: iop.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-//-*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-//  Description:	Global header file that contain definitions that 
-//                      are common/shared at the IOP chip level
-*/
-////////////////////////////////////////////////////////////////////////
-
-
-// Address Map Defines
-// ===================
-
-
-
-
-// CMP space
-
-
-
-// IOP space
-
-
-
-
-                               //`define ENET_ING_CSR     8'h84
-                               //`define ENET_EGR_CMD_CSR 8'h85
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2 space
-
-
-
-// More IOP space
-
-
-
-
-
-//Cache Crossbar Width and Field Defines
-//======================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//bits 133:128 are shared by different fields
-//for different packet types.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define CPX_INV_PA_HI   116
-//`define CPX_INV_PA_LO   112
-
-
-
-
-
-
-// cache invalidation format
-// `define CPX_INV_DCACHE_WORD0_VAL 0
-// `define CPX_INV_ICACHE_WORD0_VAL 1
-// `define CPX_INV_WORD0_WAY 5:2
-// `define CPX_INV_DCACHE_WORD0_VAL 6
-// `define CPX_INV_ICACHE_WORD0_VAL 7
-// `define CPX_INV_WORD0_WAY 11:8
-// `define CPX_INV_DCACHE_WORD0_VAL 12
-// // `define CPX_INV_ICACHE_WORD0_VAL 13
-// `define CPX_INV_WORD0_WAY 17:14
-// `define CPX_INV_DCACHE_WORD0_VAL 18
-// // `define CPX_INV_ICACHE_WORD0_VAL 19
-// `define CPX_INV_WORD0_WAY 23:20
-
-
-
-
-// 4 extra bits for bigger icache/dcache
-// up to 512KB l1 icache, 256KB l1 dcache
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Pico defines
-
-
-
-
-
-
-
-
-
-
-
-
-
-//End cache crossbar defines
-
-
-// Number of COS supported by EECU 
-
-
-
-// 
-// BSC bus sizes
-// =============
-//
-
-// General
-
-
-
-
-// CTags
-
-
-
-
-
-
-
-
-
-
-
-
-
-// reinstated temporarily
-
-
-
-
-// CoS
-
-
-
-
-
-
-// L2$ Bank
-
-
-
-// L2$ Req
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2$ Ack
-
-
-
-
-
-
-
-
-// Enet Egress Command Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Enet Egress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-// This is cleaved in between Egress Datapath Ack's
-
-
-
-
-
-
-
-
-// Enet Egress Datapath
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: EEPU
-// Tag is: TLEN, SOF, EOF, QID = 15
-
-
-
-
-
-
-// Nack + Tag Info + CTag
-
-
-
-
-// ENET Ingress Queue Management Req
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Queue Management Ack
-
-
-
-
-
-
-
-
-// Enet Ingress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Packet Unit Ack
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: PCI
-// Tag is: CTAG
-
-
-
-
-
-// PCI-X Request
-
-
-
-
-
-
-
-
-
-
-
-// PCI_X Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-//
-// BSC array sizes
-//================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-// ECC syndrome bits per memory element
-
-
-
-
-//
-// BSC Port Definitions
-// ====================
-//
-// Bits 7 to 4 of curr_port_id
-
-
-
-
-
-
-
-
-// Number of ports of each type
-
-
-// Bits needed to represent above
-
-
-// How wide the linked list pointers are
-// 60b for no payload (2CoS)
-// 80b for payload (2CoS)
-
-//`define BSC_OBJ_PTR   80
-//`define BSC_HD1_HI    69
-//`define BSC_HD1_LO    60
-//`define BSC_TL1_HI    59
-//`define BSC_TL1_LO    50
-//`define BSC_CT1_HI    49
-//`define BSC_CT1_LO    40
-//`define BSC_HD0_HI    29
-//`define BSC_HD0_LO    20
-//`define BSC_TL0_HI    19
-//`define BSC_TL0_LO    10
-//`define BSC_CT0_HI     9
-//`define BSC_CT0_LO     0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// I2C STATES in DRAMctl
-
-
-
-
-
-
-
-//
-// IOB defines
-// ===========
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define IOB_INT_STAT_WIDTH   32
-//`define IOB_INT_STAT_HI      31
-//`define IOB_INT_STAT_LO       0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fixme - double check address mapping
-// CREG in `IOB_INT_CSR space
-
-
-
-
-
-
-
-
-
-
-// CREG in `IOB_MAN_CSR space
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Address map for TAP access of SPARC ASI
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// CIOP UCB Bus Width
-// ==================
-//
-//`define IOB_EECU_WIDTH       16  // ethernet egress command
-//`define EECU_IOB_WIDTH       16
-
-//`define IOB_NRAM_WIDTH       16  // NRAM (RLDRAM previously)
-//`define NRAM_IOB_WIDTH        4
-
-
-
-
-//`define IOB_ENET_ING_WIDTH   32  // ethernet ingress
-//`define ENET_ING_IOB_WIDTH    8
-
-//`define IOB_ENET_EGR_WIDTH    4  // ethernet egress
-//`define ENET_EGR_IOB_WIDTH    4
-
-//`define IOB_ENET_MAC_WIDTH    4  // ethernet MAC
-//`define ENET_MAC_IOB_WIDTH    4
-
-
-
-
-//`define IOB_BSC_WIDTH         4  // BSC
-//`define BSC_IOB_WIDTH         4
-
-
-
-
-
-
-
-//`define IOB_CLSP_WIDTH        4  // clk spine unit
-//`define CLSP_IOB_WIDTH        4
-
-
-
-
-
-//
-// CIOP UCB Buf ID Type
-// ====================
-//
-
-
-
-//
-// Interrupt Device ID
-// ===================
-//
-// Caution: DUMMY_DEV_ID has to be 9 bit wide
-//          for fields to line up properly in the IOB.
-
-
-
-//
-// Soft Error related definitions 
-// ==============================
-//
-
-
-
-//
-// CMP clock
-// =========
-//
-
-
-
-
-//
-// NRAM/IO Interface
-// =================
-//
-
-
-
-
-
-
-
-
-
-
-//
-// NRAM/ENET Interface
-// ===================
-//
-
-
-
-
-
-
-
-//
-// IO/FCRAM Interface
-// ==================
-//
-
-
-
-
-
-
-//
-// PCI Interface
-// ==================
-// Load/store size encodings
-// -------------------------
-// Size encoding
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 100 - quad
-
-
-
-
-
-
-//
-// JBI<->SCTAG Interface
-// =======================
-// Outbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Inbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// JBI->IOB Mondo Header Format
-// ============================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// JBI->IOB Mondo Bus Width/Cycle
-// ==============================
-// Cycle  1 Header[15:8]
-// Cycle  2 Header[ 7:0]
-// Cycle  3 J_AD[127:120]
-// Cycle  4 J_AD[119:112]
-// .....
-// Cycle 18 J_AD[  7:  0]
-
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-// 63         50 49      42 41      34 33           30 29      22 21                 0   
-// ------------------------------------------------------------------------------------
-// |            |          |          |               |          |                    |
-// |  Chip ID   |  Dest X  |  Dest Y  |  Final Route  |  Length  |    Header Payload  | 
-// |            |          |          |               |          |                    |
-// ------------------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
- //whether the routing is based on chipid or x y position
- //`define    ROUTING_CHIP_ID
- 
-
- //defines for different topology, only one should be active
- //`define    NETWORK_TOPO_2D_MESH
- //`define    NETWORK_TOPO_3D_MESH
- 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: sys.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// -*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-// Description:		Global header file that contain definitions that 
-//                      are common/shared at the systme level
-*/
-////////////////////////////////////////////////////////////////////////
-//
-// Setting the time scale
-// If the timescale changes, JP_TIMESCALE may also have to change.
-`timescale	1ps/1ps
-`default_nettype wire
-
-//
-// Number of threads in a core
-// ===========================
-//
-
-//`define CONFIG_NUM_THREADS // This must be defined for any of below to work
-//`define THREADS_1
-//`define THREADS_2
-//`define THREADS_3
-
-
-//
-// JBUS clock
-// =========
-//
-// `define SYSCLK_PERIOD   5000
-
-
-// Afara Link Defines
-// ==================
-
-// Reliable Link
-
-
-
-
-// Afara Link Objects
-
-
-// Afara Link Object Format - Reliable Link
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Congestion
-
-
-
-  
-
-
-
-
-
-
-
-// Afara Link Object Format - Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Request
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Message
-
-
-
-// Acknowledge Types
-
-
-
-
-// Request Types
-
-
-
-
-
-// Afara Link Frame
-
-
-
-//
-// UCB Packet Type
-// ===============
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// UCB Data Packet Format
-// ======================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Size encoding for the UCB_SIZE_HI/LO field
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 111 - quad-word
-
-
-
-
-
-
-
-//
-// UCB Interrupt Packet Format
-// ===========================
-//
-
-
-
-
-
-
-
-
-
-
-//`define UCB_THR_HI             9      // (6) cpu/thread ID shared with
-//`define UCB_THR_LO             4             data packet format
-//`define UCB_PKT_HI             3      // (4) packet type shared with
-//`define UCB_PKT_LO             0      //     data packet format
-
-
-
-
-
-
-
-//
-// FCRAM Bus Widths
-// ================
-//
-
-
-
-
-
-
-//
-// ENET clock periods
-// ==================
-//
-// `define AXGRMII_CLK_PERIOD          6400 // 312.5MHz/2
-// `define ENET_GMAC_CLK_PERIOD        8000 // 125MHz
-
-
-//
-// JBus Bridge defines
-// =================
-//
-// `define      SYS_UPA_CLK        `SYS.upa_clk
-// `define      SYS_J_CLK          `SYS.j_clk
-// `define      SYS_P_CLK          `SYS.p_clk
-// `define      SYS_G_CLK          `SYS.g_clk
-// `define      JP_TIMESCALE       `timescale 1 ps / 1 ps
-// `define      PCI_CLK_PERIOD     15152                  //  66 MHz
-// `define      UPA_RD_CLK_PERIOD  6666                   // 150 MHz
-// `define      UPA_REF_CLK_PERIOD 7576                   // 132 MHz
-// `define      ICHIP_CLK_PERIOD   30304                  //  33 MHz
-
-
-//
-// PCI Device Address Configuration
-// ================================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: tlu.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// ifu trap types
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// modified for hypervisor support
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-// modified due to bug 2588
-// `define	TSA_PSTATE_VRANGE2_LO 16 
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-//
-// added due to Niagara SRAMs methodology
-// The following defines have been replaced due
-// the memory macro replacement from:
-// bw_r_rf32x144 -> 2x bw_r_rf32x80
-/*
-`define	TSA_MEM_WIDTH     144 
-`define	TSA_HTSTATE_HI    142 //  3 bits 
-`define	TSA_HTSTATE_LO    140 
-`define	TSA_TPC_HI        138 // 47 bits 
-`define	TSA_TPC_LO         92
-`define	TSA_TNPC_HI        90 // 47 bits
-`define	TSA_TNPC_LO        44 
-`define	TSA_TSTATE_HI      40 // 29 bits 
-`define	TSA_TSTATE_LO      12 
-`define	TSA_TTYPE_HI        8 //  9 bits
-`define	TSA_TTYPE_LO        0
-`define	TSA_MEM_CWP_LO	   12
-`define	TSA_MEM_CWP_HI	   14
-`define	TSA_MEM_PSTATE_LO  15
-`define	TSA_MEM_PSTATE_HI  22
-`define	TSA_MEM_ASI_LO	   23
-`define	TSA_MEM_ASI_HI	   30
-`define	TSA_MEM_CCR_LO	   31
-`define	TSA_MEM_CCR_HI	   38
-`define	TSA_MEM_GL_LO	   39 
-`define	TSA_MEM_GL_HI	   40 
-*/
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-// HPSTATE position definitions within wsr
-
-
-
-
-
-
-// TSTATE postition definitions within wsr
-
-
-
-
-
-
-
-// modified due to bug 2588
-
-
-// added for bug 2584 
-
-
-
-
-//
-
-
-
-
-
-
-
-//
-// tick_cmp and stick_cmp definitions
-
-
-
-
-
-//
-// PIB WRAP
-
-
-
-// HPSTATE postition definitions
-
-
-
-
-
-
-// HTBA definitions
-
-
-
-
-// TBA definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// added for the hypervisor support
-
-
-// modified due to bug 2588
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// compressed PSTATE WSR definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// ASI_QUEUE for hypervisor
-// Queues are: CPU_MONODO
-//             DEV_MONODO
-//             RESUMABLE_ERROR
-//             NON_RESUMABLE_ERROR
-//
-
-
-
-
-
-
-
-// for address range checking
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Niagara scratch-pads
-// VA address of 0x20 and 0x28 are exclusive to hypervisor
-// 
-
-
-
-
-
-
-
-//
-// range checking 
-
-
-
-
-
-
-
-// PIB related definitions
-// Bit definition for events
-
-
-
-
-
-
-
-
-
-// 
-// PIB related definitions
-// PCR and PIC address definitions
-
-
-
-// 
-// PCR bit definitions
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-// PIC definitions
-
-
-
-
-
-
-
-
-// PIC  mask bit position definitions
-
-
-
-
-
-
-
-
-
-
-// added define from sparc_tlu_int.v 
-
-
-
-
-
-
-
-
-
-
-//
-// shadow scan related definitions 
-
-// modified due to logic redistribution
-// `define TCL_SSCAN_WIDTH 12 
-
-
-
-
-
-// `define TCL_SSCAN_LO 51 
-
-
-
-
-// 
-// position definitions - TDP
-
-
-
-
-
-
-// 
-// position definitions - TCL
-
-
-
-
-// 
-// To speedup POR for verification purposes
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-//==================================================================================================
-//  Filename      : jtag.vh
-//  Created On    : 2014-01-31 12:52:57
-//  Last Modified : 2015-01-28 16:54:05
-//  Revision      :
-//  Author        : Tri Nguyen
-//  Company       : Princeton University
-//  Email         : trin@princeton.edu
-//
-//  Description   : Parallel JTAG/debug controller defines
-//==================================================================================================
-
-
-/////////////////////////////////
-// Chip ID in JTAG
-/////////////////////////////////
-
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG TAP
-/////////////////////////////////
-// copied from ctu.h
-
-
-
-
-
-
-
-
-// `define TAP_CREG_ADDR          6'h08
-// `define TAP_CREG_WDATA         6'h09
-// `define TAP_CREG_RDATA         6'h0a
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-
-
-
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-// `define TAP_MBIST_SERIAL       6'h14
-// `define TAP_MBIST_PARALLEL     6'h15
-// `define TAP_MBIST_RESULT       6'h16
-// `define TAP_MBIST_ABORT        6'h17
-
-// `define TAP_PLL_BYPASS         6'h18
-
-// `define TAP_CLK_STOP_ID        6'h1a
-// `define TAP_CLK_SEL            6'h1b  //mask ff00 for ck src
-
-// `define TAP_SSCAN_T0           6'h1c
-// `define TAP_SSCAN_T1           6'h1d
-// `define TAP_SSCAN_T2           6'h1e
-// `define TAP_SSCAN_T3           6'h1f
-
-// `define TAP_SCAN_PARALLEL      6'h20
-// `define TAP_SCAN_SERIAL        6'h21
-// `define TAP_SCAN_MTEST_LONG    6'h22
-// `define TAP_SCAN_MTEST_SHORT   6'h23
-// `define TAP_SCAN_BYPASS_EN     6'h24
-// `define TAP_SCAN_NSTEP         6'h25
-// `define TAP_SCAN_DUMP          6'h26
-
-// `define TAP_EFC_READ           6'h28 
-// `define TAP_EFC_BYPASS_DATA    6'h29 
-// `define TAP_EFC_BYPASS         6'h2a 
-// `define TAP_EFC_READ_MODE      6'h2b 
-// `define TAP_EFC_COL_ADDR       6'h2c
-// `define TAP_EFC_ROW_ADDR       6'h2d
-// `define TAP_EFC_DEST_SAMPLE    6'h2e
-
-
-
-
-
-/////////////////////////////////
-// CTAP register select defines
-/////////////////////////////////
-
-// `define CTAP_DATA_REG_WIDTH 64
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG instructions
-/////////////////////////////////
-
-// header
-
-
-// lengths of header
-
-
-
-
-
-// definitions of operations
-// `define JTAG_REQ_OP_READ_SHADOWSCAN 8'd1
-
-// `define JTAG_REQ_OP_STALL_CORE 8'd3
-
-
-// `define JTAG_REQ_OP_WRITE_PC 8'd6
-// `define JTAG_REQ_OP_WRITE_THREADSTATE 8'd7
-// `define JTAG_REQ_OP_CPX_INTERRUPT 8'd8
-
-
-
-
-
-
-
-
-// definitions of misc field for read/write rtap
-
-
-
-
-
-
-
-
-
-
-
-// `define JTAG_RTAP_ID__REG 16'd
-
-
-// definitions of tileids
-// `define CTAP_ID_BROADCAST 6'b111111
-
-
-
-// mask of header
-
-
-
-
-// misc is used for stall bit at bit 0
-
-// address reg
-
-
-
-
-
-// masks in address reg
-
-
-
-
-// data reg
-
-
-
-// // From CTAP to RTAP
-// // these valid vector assumes 4b bus. so 32b vector would be 128b
-// `define CTAP_REQ_VEC_WHOLE_PACKET 32'hffffffff
-// // header has first 32b
-// `define CTAP_REQ_VEC_HEADER 32'h000000ff
-// // half is 64b, includes the addresses
-// `define CTAP_REQ_VEC_HALF 32'h0000ffff
-
-
-
-
-
-// RTAP returns
-
-
-
-
-
-
-// RTAP states
-
-
-
-
-
-
-
-
-
-
-
-
-// ORAM specifics
-
-
-
-/////////////////////////////////
-// UCB related
-/////////////////////////////////
-
-
-
-
-// CTAP_UCB_TILEID_MASK
-
-// RTAP_INSTRUCTION_MASK
-// RTAP_INSTRUCTION_RETURN_SHADOWSCAN
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 Copyright (c) 2015 Princeton University
 All rights reserved.
@@ -4648,7 +2727,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //==================================================================================================
 //  Filename      : clk_gating_latch.v
 //  Created On    : 2015-01-26 14:10:43
-//  Last Modified : 2015-01-26 15:13:40
+//  Last Modified : 2019-04-17 11:56:55
 //  Revision      :
 //  Author        : Tri Nguyen
 //  Company       : Princeton University
@@ -4663,20 +2742,32 @@ module clk_gating_latch (
     output wire clk_out
 );
 
-wire clk_en_sync;
-reg clk_en_sync_latch;
+// use clock buffer on FPGA
+// note that not all FPGAs have enough of these available
+// so we use the latch as a fallback on certain boards (e.g., vc707)
 
-assign clk_out = clk & clk_en_sync_latch;
 
-synchronizer sync(
-    .clk            (clk),
-    .presyncdata    (clk_en),
-    .syncdata       (clk_en_sync)
-);
 
-// clk_en_sync_latch changes only on the negative duty of the cycle
-always @ (clk or clk_en_sync)
-    if (~clk) clk_en_sync_latch = clk_en_sync;
+
+ // PITON_FPGA_SYNTH
+
+  wire clk_en_sync;
+  reg clk_en_sync_latch;
+
+  assign clk_out = clk & clk_en_sync_latch;
+
+  synchronizer sync(
+      .clk            (clk),
+      .presyncdata    (clk_en),
+      .syncdata       (clk_en_sync)
+  );
+
+  // if possible, replace this with a native clock gate from the std cell lib
+  // clk_en_sync_latch changes only on the negative duty of the cycle
+  always @ (clk or clk_en_sync)
+      if (~clk) clk_en_sync_latch = clk_en_sync;
+
+
 
 endmodule // clk_gating_latch
 // Copyright (c) 2015 Princeton University
@@ -8344,15 +6435,15 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
 always @ (posedge clk)
+  q[SIZE-1:0]  <= din[SIZE-1:0] ;
 
-	q[SIZE-1:0]  <= (se) ? si[SIZE-1:0]  : din[SIZE-1:0] ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
 
 
 
@@ -8430,16 +6521,16 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
-// Scan-Enable dominates
 always @ (posedge clk)
+	q[SIZE-1:0]  <= ((rst) ? {SIZE{1'b0}}  : din[SIZE-1:0] );
 
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0] : ((rst) ? {SIZE{1'b0}}  : din[SIZE-1:0] );
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffr_s
@@ -8463,16 +6554,16 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk)
+	q[SIZE-1:0]  <= rst_l ? din[SIZE-1:0] : {SIZE{1'b0}};
 
-	q[SIZE-1:0]  <= rst_l ? ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] ) : {SIZE{1'b0}};
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffrl_s
@@ -8545,15 +6636,15 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	q[SIZE-1:0]  <= ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) ;
 
-	q[SIZE-1:0]  <= (se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
 
 
 endmodule // dffe_s
@@ -8607,16 +6698,16 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	q[SIZE-1:0]  <= (rst ? {SIZE{1'b0}} : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
 
-//	q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0]  : (rst ? {SIZE{1'b0}} : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -8652,16 +6743,16 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	 q[SIZE-1:0]  <= (rst_l ? ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) : {SIZE{1'b0}}) ;
 
-//	q[SIZE-1:0]  <= rst_l ? ((se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) : {SIZE{1'b0}} ;
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0]  : (rst_l ? ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) : {SIZE{1'b0}}) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffrle_s
@@ -8745,15 +6836,15 @@ output  [SIZE-1:0]      so ;    // scan-output
 reg     [SIZE-1:0]      q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk or posedge rst)
-  q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] );
+	q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : din[SIZE-1:0];
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -8778,15 +6869,15 @@ output  [SIZE-1:0]      so ;    // scan-output
 reg     [SIZE-1:0]      q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk or negedge rst_l)
-  q[SIZE-1:0]  <= (!rst_l) ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] );
+	q[SIZE-1:0]  <= (!rst_l) ? {SIZE{1'b0}} : din[SIZE-1:0];
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -15344,6 +13435,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // HEADER 3
 
 
@@ -18072,6 +16164,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // devices.xml
 
 
@@ -18173,6 +16266,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -18896,6 +16990,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -20957,6 +19052,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module sram_l1d_tag
 (
 input wire MEMCLK,
@@ -21704,6 +19800,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -23617,6 +21714,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module sram_l1i_tag
 (
 input wire MEMCLK,
@@ -23761,6 +21859,7 @@ bram_1rw_wrapper #(
 //
 //
 //==================================================================================================
+
 
 
 
@@ -25350,6 +23449,7 @@ endmodule
 //
 //
 //==================================================================================================
+
 
 
 
@@ -31574,6 +29674,7 @@ endmodule
 //
 //
 //==================================================================================================
+
 
 
 
@@ -40113,6 +38214,7 @@ endmodule
 
 
 
+
 //PITON_PROTO enables all FPGA related modifications
 
 
@@ -46951,7 +45053,7 @@ module sparc_ifu_rndrob(/*AUTOARG*/
    assign 	next_pv[3:1] = pv[3:1] & {3{~reset}};
    assign 	next_pv[0] = pv[0] | reset;
    
-   dff_s #4  park_reg(.din  (next_pv),
+   dff_s #(4)  park_reg(.din  (next_pv),
 		    .clk  (clk),
 		    .q    (park_vec),
 		    .se   (se), .si(), .so());
@@ -48821,6 +46923,7 @@ endmodule // sparc_ifu_rndrob
 //
 //
 //==================================================================================================
+
 
 
 
@@ -51905,6 +50008,7 @@ endmodule
 //
 //
 //==================================================================================================
+
 
 
 
@@ -82153,7 +80257,7 @@ module sparc_tlu_intctl(/*AUTOARG*/
 			    ind_inc_type_i1[1] & ind_inc_type_i1[0] :
 	                    1'b0;
 
-   dffr_s #1  rstint_ff(.din  (rst_int_i1),
+   dffr_s #(1)  rstint_ff(.din  (rst_int_i1),
 		      .q    (tlu_ifu_rstint_i2),
 		      .clk  (clk),
 //
@@ -82162,7 +80266,7 @@ module sparc_tlu_intctl(/*AUTOARG*/
 		      .rst  (local_rst),
 		      .se   (se), .si(), .so());
    
-   dffr_s #1  nukint_ff(.din  (nuke_int_i1),
+   dffr_s #(1)  nukint_ff(.din  (nuke_int_i1),
 		      .q    (tlu_ifu_nukeint_i2),
 		      .clk  (clk),
 //
@@ -82171,7 +80275,7 @@ module sparc_tlu_intctl(/*AUTOARG*/
 		      .rst  (local_rst),
 		      .se   (se), .si(), .so());
    
-   dffr_s #1  resint_ff(.din  (resum_int_i1),
+   dffr_s #(1)  resint_ff(.din  (resum_int_i1),
 		      .q    (tlu_ifu_resumint_i2),
 		      .clk  (clk),
 //
@@ -82218,19 +80322,19 @@ module sparc_tlu_intctl(/*AUTOARG*/
    /*
    assign  int_activate_i2 = ~int_pending_i2_l | tlu_int_sftint_pend;
    // send message to SWL to wake up thread if it is halted
-   dff_s #4 act_signal_reg(.din (int_activate_i2[3:0]),
+   dff_s #(4) act_signal_reg(.din (int_activate_i2[3:0]),
 			 .q   (tlu_ifu_int_activate_i3[3:0]),
 			 .clk (clk),
 			 .se  (se), .si(), .so());
    */
    
    // ask IFU to schedule interrupt
-   dff_s #4 int_signal_reg(.din (int_pending_i2[3:0]),
+   dff_s #(4) int_signal_reg(.din (int_pending_i2[3:0]),
 			 .q   (tlu_ifu_hwint_i3[3:0]),
 			 .clk (clk),
 			 .se  (se), .si(), .so());
 
-   dff_s #4 rst_signal_reg(.din (rstthr_i1[3:0]),
+   dff_s #(4) rst_signal_reg(.din (rstthr_i1[3:0]),
 			 .q   (tlu_ifu_rstthr_i2[3:0]),
 			 .clk (clk),
 			 .se  (se), .si(), .so());
@@ -82408,7 +80512,7 @@ assign tlu_lsu_int_ld_ill_va_w2 = int_ld_ill_va_w2;
               (asi_indr & asi_write & asi_thr[0]) |
               (indr_vld[0] & ~indr_rst[0]); 
 
-   dff_s #4 indr_vld_reg(.din (indr_vld_next[3:0]),
+   dff_s #(4) indr_vld_reg(.din (indr_vld_next[3:0]),
 		       .q   (indr_vld[3:0]),
 		       .clk (clk),
 		       .se  (se), .si(), .so());
@@ -84294,29 +82398,29 @@ module sparc_tlu_intdp (/*AUTOARG*/
    assign  ind_inc_thrid_i1[4:0] = lsu_ind_intpkt_thr[4:0];
 
    // rstid enable mux
-   dp_mux2es #6 rid_mux0(.dout  (next_t0_rstid_i1[5:0]),
+   dp_mux2es #(6) rid_mux0(.dout  (next_t0_rstid_i1[5:0]),
 			 .in0   (t0_rstid_i2[5:0]),
 			 .in1   (int_id_i1[5:0]),
 			 .sel   (inc_ind_rstthr_i1[0]));
 
  // Use two threads unless this is defined
 
-   dp_mux2es #6 rid_mux1(.dout  (next_t1_rstid_i1[5:0]),
+   dp_mux2es #(6) rid_mux1(.dout  (next_t1_rstid_i1[5:0]),
              .in0   (t1_rstid_i2[5:0]),
              .in1   (int_id_i1[5:0]),
              .sel   (inc_ind_rstthr_i1[1]));
 
    // rst id flops
-   dff_s #6 rid0_reg(.din (next_t0_rstid_i1[5:0]),
+   dff_s #(6) rid0_reg(.din (next_t0_rstid_i1[5:0]),
            .q   (t0_rstid_i2[5:0]),
            .clk (clk),
            .se  (se), .si(), .so());
-   dff_s #6 rid1_reg(.din (next_t1_rstid_i1[5:0]),
+   dff_s #(6) rid1_reg(.din (next_t1_rstid_i1[5:0]),
            .q   (t1_rstid_i2[5:0]),
            .clk (clk),
            .se  (se), .si(), .so());
 
-   dp_mux2ds #6 tlurid_mux(.dout (int_tlu_rstid_m[5:0]),
+   dp_mux2ds #(6) tlurid_mux(.dout (int_tlu_rstid_m[5:0]),
                .in0  (t0_rstid_i2[5:0]),
                .in1  (t1_rstid_i2[5:0]),
                .sel0_l (~inc_ind_thr_m[0]),
@@ -84468,20 +82572,20 @@ module sparc_tlu_intdp (/*AUTOARG*/
    assign  new_t3_inrr_i1 = inrr_dec_i1 | t3_inrr_arw_i1;
 
    // enable mux to load new interrupt to INRR
-   dp_mux2es #64 inrr_en_mux0(.dout  (next_t0_inrr_i1[63:0]),
+   dp_mux2es #(64) inrr_en_mux0(.dout  (next_t0_inrr_i1[63:0]),
 			  .in0   (t0_inrr_arw_i1[63:0]),
 			  .in1   (new_t0_inrr_i1[63:0]),
 			  .sel   (inc_ind_ld_int_i1[0]));
  // Use two threads unless this is defined
 
-   dp_mux2es #64 inrr_en_mux1(.dout  (next_t1_inrr_i1[63:0]),
+   dp_mux2es #(64) inrr_en_mux1(.dout  (next_t1_inrr_i1[63:0]),
               .in0   (t1_inrr_arw_i1[63:0]),
               .in1   (new_t1_inrr_i1[63:0]),
               .sel   (inc_ind_ld_int_i1[1]));
 
    // interrupt receive register (INRR)
    // change to dff -- software will reset before IE turns on
-   dffr_s #64 t0_inrr (.din (next_t0_inrr_i1[63:0]),
+   dffr_s #(64) t0_inrr (.din (next_t0_inrr_i1[63:0]),
              .q   (t0_inrr_i2[63:0]),
              .clk (clk),
    //
@@ -84489,7 +82593,7 @@ module sparc_tlu_intdp (/*AUTOARG*/
    //            .rst (reset),
              .rst (local_rst),
              .se  (se), .si(), .so());
-   dffr_s #64 t1_inrr (.din (next_t1_inrr_i1[63:0]),
+   dffr_s #(64) t1_inrr (.din (next_t1_inrr_i1[63:0]),
              .q   (t1_inrr_i2[63:0]),
              .clk (clk),
    //
@@ -84498,7 +82602,7 @@ module sparc_tlu_intdp (/*AUTOARG*/
              .rst (local_rst),
              .se  (se), .si(), .so());
 
-   dp_mux2ds #64 inrr_rd_mux(.dout (inrr_rd_data_i2[63:0]),
+   dp_mux2ds #(64) inrr_rd_mux(.dout (inrr_rd_data_i2[63:0]),
              .in0  (t0_inrr_i2[63:0]),
              .in1  (t1_inrr_i2[63:0]),
              .sel0_l (~inc_ind_asi_thr[0]),
@@ -84718,16 +82822,16 @@ module sparc_tlu_intdp (/*AUTOARG*/
 
    // Interrupt Vector Register (INVR)
    // Cannot write to INVR
-   dff_s #6 t0_invr (.din (t0_invr_i2[5:0]),
+   dff_s #(6) t0_invr (.din (t0_invr_i2[5:0]),
            .q   (t0_invr_i3[5:0]),
            .clk (clk),
            .se  (se), .si(), .so());
-   dff_s #6 t1_invr (.din (t1_invr_i2[5:0]),
+   dff_s #(6) t1_invr (.din (t1_invr_i2[5:0]),
            .q   (t1_invr_i3[5:0]),
            .clk (clk),
            .se  (se), .si(), .so());
 
-   dp_mux2ds #6 invr_rd_mux(.dout (invr_rd_data_i3[5:0]),
+   dp_mux2ds #(6) invr_rd_mux(.dout (invr_rd_data_i3[5:0]),
                 .in0  (t0_invr_i3[5:0]),
                 .in1  (t1_invr_i3[5:0]),
                 .sel0_l (~inc_ind_asi_thr[0]),
@@ -84985,27 +83089,27 @@ module sparc_tlu_intdp (/*AUTOARG*/
    // assign  indr_inc_rst_pkt = lsu_tlu_st_rs3_data_g[`INT_TYPE_HI] |
    // 	                      lsu_tlu_st_rs3_data_g[`INT_TYPE_LO];
    
-   dp_mux2es  #11   t0_indr_mux(.dout (t0_indr_next[10:0]),
+   dp_mux2es  #(11)   t0_indr_mux(.dout (t0_indr_next[10:0]),
 				.in0  (t0_indr[10:0]),
 				.in1  (indr_wr_pkt[10:0]),
 				.sel  (inc_ind_asi_wr_indr[0]));
  // Use two threads unless this is defined
 
-   dp_mux2es  #11   t1_indr_mux(.dout (t1_indr_next[10:0]),
+   dp_mux2es  #(11)   t1_indr_mux(.dout (t1_indr_next[10:0]),
                 .in0  (t1_indr[10:0]),
                 .in1  (indr_wr_pkt[10:0]),
                 .sel  (inc_ind_asi_wr_indr[1]));
 
-   dff_s #11 t0_indr_reg(.din (t0_indr_next[10:0]),
+   dff_s #(11) t0_indr_reg(.din (t0_indr_next[10:0]),
            .q   (t0_indr[10:0]),
            .clk (clk),
            .se  (se), .si(), .so());
-   dff_s #11 t1_indr_reg(.din (t1_indr_next[10:0]),
+   dff_s #(11) t1_indr_reg(.din (t1_indr_next[10:0]),
            .q   (t1_indr[10:0]),
            .clk (clk),
            .se  (se), .si(), .so());
 
-   dp_mux2ds #11 int_dsp_mux(.dout (indr_pcxpkt[10:0]),
+   dp_mux2ds #(11) int_dsp_mux(.dout (indr_pcxpkt[10:0]),
                  .in0  (t0_indr[10:0]),
                  .in1  (t1_indr[10:0]),
                  .sel0_l (~inc_ind_indr_grant[0]),
@@ -86328,6 +84432,7 @@ endmodule // sparc_tlu_dec64
 //
 //
 //==================================================================================================
+
 
 
 
@@ -96318,6 +94423,7 @@ endmodule
 
 
 
+
 ////////////////////////////////////////////////////////////////////////
 // Local header file includes / local defines
 ////////////////////////////////////////////////////////////////////////
@@ -100214,6 +98320,7 @@ endmodule
 
 
 
+
 //PITON_PROTO enables all FPGA related modifications
 
 
@@ -102746,6 +100853,7 @@ endmodule
 //
 //
 //==================================================================================================
+
 
 
 

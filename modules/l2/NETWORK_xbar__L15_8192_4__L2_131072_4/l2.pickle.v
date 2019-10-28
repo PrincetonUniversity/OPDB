@@ -612,1927 +612,6 @@ end
 
 endmodule
 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: iop.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-//-*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-//  Description:	Global header file that contain definitions that 
-//                      are common/shared at the IOP chip level
-*/
-////////////////////////////////////////////////////////////////////////
-
-
-// Address Map Defines
-// ===================
-
-
-
-
-// CMP space
-
-
-
-// IOP space
-
-
-
-
-                               //`define ENET_ING_CSR     8'h84
-                               //`define ENET_EGR_CMD_CSR 8'h85
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2 space
-
-
-
-// More IOP space
-
-
-
-
-
-//Cache Crossbar Width and Field Defines
-//======================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//bits 133:128 are shared by different fields
-//for different packet types.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define CPX_INV_PA_HI   116
-//`define CPX_INV_PA_LO   112
-
-
-
-
-
-
-// cache invalidation format
-// `define CPX_INV_DCACHE_WORD0_VAL 0
-// `define CPX_INV_ICACHE_WORD0_VAL 1
-// `define CPX_INV_WORD0_WAY 5:2
-// `define CPX_INV_DCACHE_WORD0_VAL 6
-// `define CPX_INV_ICACHE_WORD0_VAL 7
-// `define CPX_INV_WORD0_WAY 11:8
-// `define CPX_INV_DCACHE_WORD0_VAL 12
-// // `define CPX_INV_ICACHE_WORD0_VAL 13
-// `define CPX_INV_WORD0_WAY 17:14
-// `define CPX_INV_DCACHE_WORD0_VAL 18
-// // `define CPX_INV_ICACHE_WORD0_VAL 19
-// `define CPX_INV_WORD0_WAY 23:20
-
-
-
-
-// 4 extra bits for bigger icache/dcache
-// up to 512KB l1 icache, 256KB l1 dcache
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Pico defines
-
-
-
-
-
-
-
-
-
-
-
-
-
-//End cache crossbar defines
-
-
-// Number of COS supported by EECU 
-
-
-
-// 
-// BSC bus sizes
-// =============
-//
-
-// General
-
-
-
-
-// CTags
-
-
-
-
-
-
-
-
-
-
-
-
-
-// reinstated temporarily
-
-
-
-
-// CoS
-
-
-
-
-
-
-// L2$ Bank
-
-
-
-// L2$ Req
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2$ Ack
-
-
-
-
-
-
-
-
-// Enet Egress Command Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Enet Egress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-// This is cleaved in between Egress Datapath Ack's
-
-
-
-
-
-
-
-
-// Enet Egress Datapath
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: EEPU
-// Tag is: TLEN, SOF, EOF, QID = 15
-
-
-
-
-
-
-// Nack + Tag Info + CTag
-
-
-
-
-// ENET Ingress Queue Management Req
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Queue Management Ack
-
-
-
-
-
-
-
-
-// Enet Ingress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Packet Unit Ack
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: PCI
-// Tag is: CTAG
-
-
-
-
-
-// PCI-X Request
-
-
-
-
-
-
-
-
-
-
-
-// PCI_X Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-//
-// BSC array sizes
-//================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-// ECC syndrome bits per memory element
-
-
-
-
-//
-// BSC Port Definitions
-// ====================
-//
-// Bits 7 to 4 of curr_port_id
-
-
-
-
-
-
-
-
-// Number of ports of each type
-
-
-// Bits needed to represent above
-
-
-// How wide the linked list pointers are
-// 60b for no payload (2CoS)
-// 80b for payload (2CoS)
-
-//`define BSC_OBJ_PTR   80
-//`define BSC_HD1_HI    69
-//`define BSC_HD1_LO    60
-//`define BSC_TL1_HI    59
-//`define BSC_TL1_LO    50
-//`define BSC_CT1_HI    49
-//`define BSC_CT1_LO    40
-//`define BSC_HD0_HI    29
-//`define BSC_HD0_LO    20
-//`define BSC_TL0_HI    19
-//`define BSC_TL0_LO    10
-//`define BSC_CT0_HI     9
-//`define BSC_CT0_LO     0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// I2C STATES in DRAMctl
-
-
-
-
-
-
-
-//
-// IOB defines
-// ===========
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define IOB_INT_STAT_WIDTH   32
-//`define IOB_INT_STAT_HI      31
-//`define IOB_INT_STAT_LO       0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fixme - double check address mapping
-// CREG in `IOB_INT_CSR space
-
-
-
-
-
-
-
-
-
-
-// CREG in `IOB_MAN_CSR space
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Address map for TAP access of SPARC ASI
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// CIOP UCB Bus Width
-// ==================
-//
-//`define IOB_EECU_WIDTH       16  // ethernet egress command
-//`define EECU_IOB_WIDTH       16
-
-//`define IOB_NRAM_WIDTH       16  // NRAM (RLDRAM previously)
-//`define NRAM_IOB_WIDTH        4
-
-
-
-
-//`define IOB_ENET_ING_WIDTH   32  // ethernet ingress
-//`define ENET_ING_IOB_WIDTH    8
-
-//`define IOB_ENET_EGR_WIDTH    4  // ethernet egress
-//`define ENET_EGR_IOB_WIDTH    4
-
-//`define IOB_ENET_MAC_WIDTH    4  // ethernet MAC
-//`define ENET_MAC_IOB_WIDTH    4
-
-
-
-
-//`define IOB_BSC_WIDTH         4  // BSC
-//`define BSC_IOB_WIDTH         4
-
-
-
-
-
-
-
-//`define IOB_CLSP_WIDTH        4  // clk spine unit
-//`define CLSP_IOB_WIDTH        4
-
-
-
-
-
-//
-// CIOP UCB Buf ID Type
-// ====================
-//
-
-
-
-//
-// Interrupt Device ID
-// ===================
-//
-// Caution: DUMMY_DEV_ID has to be 9 bit wide
-//          for fields to line up properly in the IOB.
-
-
-
-//
-// Soft Error related definitions 
-// ==============================
-//
-
-
-
-//
-// CMP clock
-// =========
-//
-
-
-
-
-//
-// NRAM/IO Interface
-// =================
-//
-
-
-
-
-
-
-
-
-
-
-//
-// NRAM/ENET Interface
-// ===================
-//
-
-
-
-
-
-
-
-//
-// IO/FCRAM Interface
-// ==================
-//
-
-
-
-
-
-
-//
-// PCI Interface
-// ==================
-// Load/store size encodings
-// -------------------------
-// Size encoding
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 100 - quad
-
-
-
-
-
-
-//
-// JBI<->SCTAG Interface
-// =======================
-// Outbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Inbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// JBI->IOB Mondo Header Format
-// ============================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// JBI->IOB Mondo Bus Width/Cycle
-// ==============================
-// Cycle  1 Header[15:8]
-// Cycle  2 Header[ 7:0]
-// Cycle  3 J_AD[127:120]
-// Cycle  4 J_AD[119:112]
-// .....
-// Cycle 18 J_AD[  7:  0]
-
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-// 63         50 49      42 41      34 33           30 29      22 21                 0   
-// ------------------------------------------------------------------------------------
-// |            |          |          |               |          |                    |
-// |  Chip ID   |  Dest X  |  Dest Y  |  Final Route  |  Length  |    Header Payload  | 
-// |            |          |          |               |          |                    |
-// ------------------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
- //whether the routing is based on chipid or x y position
- //`define    ROUTING_CHIP_ID
- 
-
- //defines for different topology, only one should be active
- //`define    NETWORK_TOPO_2D_MESH
- //`define    NETWORK_TOPO_3D_MESH
- 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: sys.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// -*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-// Description:		Global header file that contain definitions that 
-//                      are common/shared at the systme level
-*/
-////////////////////////////////////////////////////////////////////////
-//
-// Setting the time scale
-// If the timescale changes, JP_TIMESCALE may also have to change.
-`timescale	1ps/1ps
-`default_nettype wire
-
-//
-// Number of threads in a core
-// ===========================
-//
-
-//`define CONFIG_NUM_THREADS // This must be defined for any of below to work
-//`define THREADS_1
-//`define THREADS_2
-//`define THREADS_3
-
-
-//
-// JBUS clock
-// =========
-//
-// `define SYSCLK_PERIOD   5000
-
-
-// Afara Link Defines
-// ==================
-
-// Reliable Link
-
-
-
-
-// Afara Link Objects
-
-
-// Afara Link Object Format - Reliable Link
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Congestion
-
-
-
-  
-
-
-
-
-
-
-
-// Afara Link Object Format - Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Request
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Message
-
-
-
-// Acknowledge Types
-
-
-
-
-// Request Types
-
-
-
-
-
-// Afara Link Frame
-
-
-
-//
-// UCB Packet Type
-// ===============
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// UCB Data Packet Format
-// ======================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Size encoding for the UCB_SIZE_HI/LO field
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 111 - quad-word
-
-
-
-
-
-
-
-//
-// UCB Interrupt Packet Format
-// ===========================
-//
-
-
-
-
-
-
-
-
-
-
-//`define UCB_THR_HI             9      // (6) cpu/thread ID shared with
-//`define UCB_THR_LO             4             data packet format
-//`define UCB_PKT_HI             3      // (4) packet type shared with
-//`define UCB_PKT_LO             0      //     data packet format
-
-
-
-
-
-
-
-//
-// FCRAM Bus Widths
-// ================
-//
-
-
-
-
-
-
-//
-// ENET clock periods
-// ==================
-//
-// `define AXGRMII_CLK_PERIOD          6400 // 312.5MHz/2
-// `define ENET_GMAC_CLK_PERIOD        8000 // 125MHz
-
-
-//
-// JBus Bridge defines
-// =================
-//
-// `define      SYS_UPA_CLK        `SYS.upa_clk
-// `define      SYS_J_CLK          `SYS.j_clk
-// `define      SYS_P_CLK          `SYS.p_clk
-// `define      SYS_G_CLK          `SYS.g_clk
-// `define      JP_TIMESCALE       `timescale 1 ps / 1 ps
-// `define      PCI_CLK_PERIOD     15152                  //  66 MHz
-// `define      UPA_RD_CLK_PERIOD  6666                   // 150 MHz
-// `define      UPA_REF_CLK_PERIOD 7576                   // 132 MHz
-// `define      ICHIP_CLK_PERIOD   30304                  //  33 MHz
-
-
-//
-// PCI Device Address Configuration
-// ================================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: tlu.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// ifu trap types
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// modified for hypervisor support
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-// modified due to bug 2588
-// `define	TSA_PSTATE_VRANGE2_LO 16 
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-//
-// added due to Niagara SRAMs methodology
-// The following defines have been replaced due
-// the memory macro replacement from:
-// bw_r_rf32x144 -> 2x bw_r_rf32x80
-/*
-`define	TSA_MEM_WIDTH     144 
-`define	TSA_HTSTATE_HI    142 //  3 bits 
-`define	TSA_HTSTATE_LO    140 
-`define	TSA_TPC_HI        138 // 47 bits 
-`define	TSA_TPC_LO         92
-`define	TSA_TNPC_HI        90 // 47 bits
-`define	TSA_TNPC_LO        44 
-`define	TSA_TSTATE_HI      40 // 29 bits 
-`define	TSA_TSTATE_LO      12 
-`define	TSA_TTYPE_HI        8 //  9 bits
-`define	TSA_TTYPE_LO        0
-`define	TSA_MEM_CWP_LO	   12
-`define	TSA_MEM_CWP_HI	   14
-`define	TSA_MEM_PSTATE_LO  15
-`define	TSA_MEM_PSTATE_HI  22
-`define	TSA_MEM_ASI_LO	   23
-`define	TSA_MEM_ASI_HI	   30
-`define	TSA_MEM_CCR_LO	   31
-`define	TSA_MEM_CCR_HI	   38
-`define	TSA_MEM_GL_LO	   39 
-`define	TSA_MEM_GL_HI	   40 
-*/
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-// HPSTATE position definitions within wsr
-
-
-
-
-
-
-// TSTATE postition definitions within wsr
-
-
-
-
-
-
-
-// modified due to bug 2588
-
-
-// added for bug 2584 
-
-
-
-
-//
-
-
-
-
-
-
-
-//
-// tick_cmp and stick_cmp definitions
-
-
-
-
-
-//
-// PIB WRAP
-
-
-
-// HPSTATE postition definitions
-
-
-
-
-
-
-// HTBA definitions
-
-
-
-
-// TBA definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// added for the hypervisor support
-
-
-// modified due to bug 2588
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// compressed PSTATE WSR definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// ASI_QUEUE for hypervisor
-// Queues are: CPU_MONODO
-//             DEV_MONODO
-//             RESUMABLE_ERROR
-//             NON_RESUMABLE_ERROR
-//
-
-
-
-
-
-
-
-// for address range checking
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Niagara scratch-pads
-// VA address of 0x20 and 0x28 are exclusive to hypervisor
-// 
-
-
-
-
-
-
-
-//
-// range checking 
-
-
-
-
-
-
-
-// PIB related definitions
-// Bit definition for events
-
-
-
-
-
-
-
-
-
-// 
-// PIB related definitions
-// PCR and PIC address definitions
-
-
-
-// 
-// PCR bit definitions
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-// PIC definitions
-
-
-
-
-
-
-
-
-// PIC  mask bit position definitions
-
-
-
-
-
-
-
-
-
-
-// added define from sparc_tlu_int.v 
-
-
-
-
-
-
-
-
-
-
-//
-// shadow scan related definitions 
-
-// modified due to logic redistribution
-// `define TCL_SSCAN_WIDTH 12 
-
-
-
-
-
-// `define TCL_SSCAN_LO 51 
-
-
-
-
-// 
-// position definitions - TDP
-
-
-
-
-
-
-// 
-// position definitions - TCL
-
-
-
-
-// 
-// To speedup POR for verification purposes
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-//==================================================================================================
-//  Filename      : jtag.vh
-//  Created On    : 2014-01-31 12:52:57
-//  Last Modified : 2015-01-28 16:54:05
-//  Revision      :
-//  Author        : Tri Nguyen
-//  Company       : Princeton University
-//  Email         : trin@princeton.edu
-//
-//  Description   : Parallel JTAG/debug controller defines
-//==================================================================================================
-
-
-/////////////////////////////////
-// Chip ID in JTAG
-/////////////////////////////////
-
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG TAP
-/////////////////////////////////
-// copied from ctu.h
-
-
-
-
-
-
-
-
-// `define TAP_CREG_ADDR          6'h08
-// `define TAP_CREG_WDATA         6'h09
-// `define TAP_CREG_RDATA         6'h0a
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-
-
-
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-// `define TAP_MBIST_SERIAL       6'h14
-// `define TAP_MBIST_PARALLEL     6'h15
-// `define TAP_MBIST_RESULT       6'h16
-// `define TAP_MBIST_ABORT        6'h17
-
-// `define TAP_PLL_BYPASS         6'h18
-
-// `define TAP_CLK_STOP_ID        6'h1a
-// `define TAP_CLK_SEL            6'h1b  //mask ff00 for ck src
-
-// `define TAP_SSCAN_T0           6'h1c
-// `define TAP_SSCAN_T1           6'h1d
-// `define TAP_SSCAN_T2           6'h1e
-// `define TAP_SSCAN_T3           6'h1f
-
-// `define TAP_SCAN_PARALLEL      6'h20
-// `define TAP_SCAN_SERIAL        6'h21
-// `define TAP_SCAN_MTEST_LONG    6'h22
-// `define TAP_SCAN_MTEST_SHORT   6'h23
-// `define TAP_SCAN_BYPASS_EN     6'h24
-// `define TAP_SCAN_NSTEP         6'h25
-// `define TAP_SCAN_DUMP          6'h26
-
-// `define TAP_EFC_READ           6'h28 
-// `define TAP_EFC_BYPASS_DATA    6'h29 
-// `define TAP_EFC_BYPASS         6'h2a 
-// `define TAP_EFC_READ_MODE      6'h2b 
-// `define TAP_EFC_COL_ADDR       6'h2c
-// `define TAP_EFC_ROW_ADDR       6'h2d
-// `define TAP_EFC_DEST_SAMPLE    6'h2e
-
-
-
-
-
-/////////////////////////////////
-// CTAP register select defines
-/////////////////////////////////
-
-// `define CTAP_DATA_REG_WIDTH 64
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG instructions
-/////////////////////////////////
-
-// header
-
-
-// lengths of header
-
-
-
-
-
-// definitions of operations
-// `define JTAG_REQ_OP_READ_SHADOWSCAN 8'd1
-
-// `define JTAG_REQ_OP_STALL_CORE 8'd3
-
-
-// `define JTAG_REQ_OP_WRITE_PC 8'd6
-// `define JTAG_REQ_OP_WRITE_THREADSTATE 8'd7
-// `define JTAG_REQ_OP_CPX_INTERRUPT 8'd8
-
-
-
-
-
-
-
-
-// definitions of misc field for read/write rtap
-
-
-
-
-
-
-
-
-
-
-
-// `define JTAG_RTAP_ID__REG 16'd
-
-
-// definitions of tileids
-// `define CTAP_ID_BROADCAST 6'b111111
-
-
-
-// mask of header
-
-
-
-
-// misc is used for stall bit at bit 0
-
-// address reg
-
-
-
-
-
-// masks in address reg
-
-
-
-
-// data reg
-
-
-
-// // From CTAP to RTAP
-// // these valid vector assumes 4b bus. so 32b vector would be 128b
-// `define CTAP_REQ_VEC_WHOLE_PACKET 32'hffffffff
-// // header has first 32b
-// `define CTAP_REQ_VEC_HEADER 32'h000000ff
-// // half is 64b, includes the addresses
-// `define CTAP_REQ_VEC_HALF 32'h0000ffff
-
-
-
-
-
-// RTAP returns
-
-
-
-
-
-
-// RTAP states
-
-
-
-
-
-
-
-
-
-
-
-
-// ORAM specifics
-
-
-
-/////////////////////////////////
-// UCB related
-/////////////////////////////////
-
-
-
-
-// CTAP_UCB_TILEID_MASK
-
-// RTAP_INSTRUCTION_MASK
-// RTAP_INSTRUCTION_RETURN_SHADOWSCAN
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 /*
 Copyright (c) 2015 Princeton University
@@ -3225,6 +1304,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 // these shifted fields are added for convienience
 // HEADER 2
+
 
 
 
@@ -4923,6 +3003,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module sram_l2_dir
 (
 input wire MEMCLK,
@@ -5544,6 +3625,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -7354,6 +5436,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module sram_l2_tag
 (
 input wire MEMCLK,
@@ -8562,6 +6645,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2(
 
     input wire clk,
@@ -8628,14 +6712,14 @@ wire [3-1:0] mshr_wr_index_in_p2;
 wire mshr_hit;
 wire [3-1:0] mshr_hit_index;
 
-wire [2-1:0] mshr_state_out;
-wire [120+2-1:0] mshr_data_out;
 
 
 
-
-
-
+wire [2-1:0] rd_mshr_state_out;
+wire [120+2-1:0] rd_mshr_data_out;
+// wire [`L2_MSHR_STATE_BITS-1:0] cam_mshr_state_out;
+wire [120+2-1:0] cam_mshr_data_out;
+wire [120+2-1:0] pending_mshr_data_out;
 
 
 wire [6-1:0] mshr_inv_counter_out;
@@ -8823,12 +6907,12 @@ l2_mshr_wrap mshr_wrap(
     .clk                    (clk),
     .rst_n                  (rst_n),
 
-    .pipe_rd_sel            (active_S1),
+
 
     .pipe_wr_sel            (active_S3),
 
 
-    .rd_en1                 (1'b0),
+
 
     .cam_en1                (mshr_cam_en_p1),
     .wr_state_en1           (mshr_wr_state_en_p1),
@@ -8838,20 +6922,20 @@ l2_mshr_wrap mshr_wrap(
     .data_in1               (mshr_data_in_p1),
     .data_mask_in1          (mshr_data_mask_in_p1),
 
-    .rd_index_in1           ({3{1'b0}}),
+
 
     .inv_counter_rd_index_in1(mshr_inv_counter_rd_index_in_p1),
     .wr_index_in1           (mshr_wr_index_in_p1),
     .addr_in1               (mshr_addr_in_p1),
 
 
-    .rd_en2                 (mshr_rd_en_p2),
-    .cam_en2                (1'b0),
+
+
 
     .wr_state_en2           (mshr_wr_state_en_p2),
     .wr_data_en2            (mshr_wr_data_en_p2),
 
-    .pending_ready2         (1'b0), 
+
 
     .inc_counter_en2        (mshr_inc_counter_en_p2),
     .state_in2              (mshr_state_in_p2),
@@ -8860,20 +6944,20 @@ l2_mshr_wrap mshr_wrap(
     .rd_index_in2           (mshr_rd_index_in_p2),
     .wr_index_in2           (mshr_wr_index_in_p2),
 
-    .addr_in2               ({9{1'b0}}),
+
 
 
     .hit                    (mshr_hit),
     .hit_index              (mshr_hit_index),
 
-    .state_out              (mshr_state_out),
-    .data_out               (mshr_data_out),
 
 
 
-
-
-
+    .rd_state_out           (rd_mshr_state_out),
+    .rd_data_out            (rd_mshr_data_out),
+    // .cam_state_out       (cam_mshr_state_out),
+    .cam_data_out           (cam_mshr_data_out),
+    .pending_data_out       (pending_mshr_data_out),
 
     .inv_counter_out        (mshr_inv_counter_out), 
     .empty_slots            (mshr_empty_slots),
@@ -9091,10 +7175,10 @@ l2_pipe1 pipe1(
 
     .mshr_hit               (mshr_hit),
 
-    .mshr_data_out          (mshr_data_out),
 
 
-
+    .cam_mshr_data_out      (cam_mshr_data_out),
+    .pending_mshr_data_out  (pending_mshr_data_out),
 
     .mshr_inv_counter_out   (mshr_inv_counter_out),
     .mshr_empty_slots       (mshr_empty_slots),
@@ -9201,11 +7285,11 @@ l2_pipe2 pipe2(
     .noc_ready_in           (noc3_ready_in),
 
 
-    .mshr_state_out         (mshr_state_out),
-    .mshr_data_out          (mshr_data_out),
 
 
 
+    .mshr_state_out         (rd_mshr_state_out),
+    .mshr_data_out          (rd_mshr_data_out),
 
 
     
@@ -11079,6 +9163,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_broadcast_counter(
 
     input wire clk,
@@ -12340,6 +10425,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_broadcast_counter_wrap(
 
     input wire clk,
@@ -13002,6 +11088,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -14933,6 +13020,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_data(
 
     input wire clk,
@@ -15628,6 +13716,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -17425,6 +15514,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_decoder(
 
     input wire [192-1:0] msg_header,
@@ -18026,6 +16116,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -19883,6 +17974,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_dir_wrap(
 
     input wire clk,
@@ -20519,6 +18611,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -22297,6 +20390,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_mshr_decoder(
 
     input wire [120+2-1:0] data_in,
@@ -23482,6 +21576,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_pipe1(
 
     input wire clk,
@@ -23520,10 +21615,10 @@ module l2_pipe1(
 
     input wire mshr_hit,
 
-    input wire [120+2-1:0] mshr_data_out,
 
 
-
+    input wire [120+2-1:0] cam_mshr_data_out,
+    input wire [120+2-1:0] pending_mshr_data_out,
  // L2_CAM_MSHR
     input wire [6-1:0] mshr_inv_counter_out,
     input wire [3:0] mshr_empty_slots,
@@ -23641,20 +21736,6 @@ wire [10-1:0] msg_sdid;
 wire [6-1:0] msg_lsid;
 
 
-wire [8-1:0] mshr_msg_type;
-wire [8-1:0] mshr_mshrid;
-wire [3-1:0] mshr_data_size;
-wire [1-1:0] mshr_cache_type;
-wire [40-1:0] mshr_addr;
-wire [2-1:0] mshr_way;
-wire [1-1:0] mshr_l2_miss;
-wire [14-1:0] mshr_src_chipid;
-wire [8-1:0] mshr_src_x;
-wire [8-1:0] mshr_src_y;
-wire [4-1:0] mshr_src_fbits;
-wire [10-1:0] mshr_sdid;
-wire [6-1:0] mshr_lsid;
-wire [6-1:0] mshr_miss_lsid;
 
 
 
@@ -23670,37 +21751,51 @@ wire [6-1:0] mshr_miss_lsid;
 
 
 
+wire [8-1:0] cam_mshr_msg_type;
+wire [8-1:0] cam_mshr_mshrid;
+wire [3-1:0] cam_mshr_data_size;
+wire [1-1:0] cam_mshr_cache_type;
+wire [40-1:0] cam_mshr_addr;
+wire [2-1:0] cam_mshr_way;
+wire [1-1:0] cam_mshr_l2_miss;
+wire [14-1:0] cam_mshr_src_chipid;
+wire [8-1:0] cam_mshr_src_x;
+wire [8-1:0] cam_mshr_src_y;
+wire [4-1:0] cam_mshr_src_fbits;
+wire [10-1:0] cam_mshr_sdid;
+wire [6-1:0] cam_mshr_lsid;
+wire [6-1:0] cam_mshr_miss_lsid;
  // L2_CAM_MSHR
 
 
-wire mshr_smc_miss;
 
 
+wire cam_mshr_smc_miss;
  // L2_CAM_MSHR
 
 
-wire mshr_recycled;
 
 
+wire cam_mshr_recycled;
 
+wire [8-1:0] pending_mshr_msg_type;
+wire [8-1:0] pending_mshr_mshrid;
+wire [3-1:0] pending_mshr_data_size;
+wire [1-1:0] pending_mshr_cache_type;
+wire [40-1:0] pending_mshr_addr;
+wire [2-1:0] pending_mshr_way;
+wire [1-1:0] pending_mshr_l2_miss;
+wire [14-1:0] pending_mshr_src_chipid;
+wire [8-1:0] pending_mshr_src_x;
+wire [8-1:0] pending_mshr_src_y;
+wire [4-1:0] pending_mshr_src_fbits;
+wire [10-1:0] pending_mshr_sdid;
+wire [6-1:0] pending_mshr_lsid;
+wire [6-1:0] pending_mshr_miss_lsid;
 
+wire pending_mshr_smc_miss;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+wire pending_mshr_recycled;
  // L2_CAM_MSHR
 
 wire msg_header_valid;
@@ -23864,95 +21959,95 @@ l2_decoder decoder(
 );
 
 
-l2_mshr_decoder mshr_decoder(
 
-    .data_in            (mshr_data_out),
-    .addr_out           (mshr_addr),
-    .way_out            (mshr_way),
-    .mshrid_out         (mshr_mshrid),
-    .cache_type_out     (mshr_cache_type),
-    .data_size_out      (mshr_data_size),
-    .msg_type_out       (mshr_msg_type),
-    .msg_l2_miss_out    (mshr_l2_miss),
-    .src_chipid_out     (mshr_src_chipid),
-    .src_x_out          (mshr_src_x),
-    .src_y_out          (mshr_src_y),
-    .src_fbits_out      (mshr_src_fbits),
-    .sdid_out           (mshr_sdid),
-    .lsid_out           (mshr_lsid),
-    .miss_lsid_out      (mshr_miss_lsid),
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// reg [`L2_MSHR_ARRAY_WIDTH-1:0] mshr_data_out;
+// always @ * begin
+//     if (mshr_cam_en)
+//         mshr_data_out = cam_mshr_data_out;
+//     else
+//         mshr_data_out = pending_mshr_data_out;
+// end
+
+l2_mshr_decoder cam_mshr_decoder(
+
+    // .cam_data_in            (cam_mshr_data_out),
+    // .pending_data_in            (pending_mshr_data_out),
+    .data_in            (cam_mshr_data_out),
+    .addr_out           (cam_mshr_addr),
+    .way_out            (cam_mshr_way),
+    .mshrid_out         (cam_mshr_mshrid),
+    .cache_type_out     (cam_mshr_cache_type), 
+    .data_size_out      (cam_mshr_data_size),
+    .msg_type_out       (cam_mshr_msg_type),
+    .msg_l2_miss_out    (cam_mshr_l2_miss),
+    .src_chipid_out     (cam_mshr_src_chipid),
+    .src_x_out          (cam_mshr_src_x),
+    .src_y_out          (cam_mshr_src_y),
+    .src_fbits_out      (cam_mshr_src_fbits),
+    .sdid_out           (cam_mshr_sdid),
+    .lsid_out           (cam_mshr_lsid),
+    .miss_lsid_out      (cam_mshr_miss_lsid),
     
-    .smc_miss_out       (mshr_smc_miss),
+    .smc_miss_out       (cam_mshr_smc_miss),
     
 
 
-    .recycled           (mshr_recycled),
+    .recycled           (cam_mshr_recycled),
     .inv_fwd_pending    ()
 );
 
+l2_mshr_decoder pending_mshr_decoder(
+
+    // .cam_data_in            (cam_mshr_data_out),
+    // .pending_data_in            (pending_mshr_data_out),
+    .data_in            (pending_mshr_data_out),
+    .addr_out           (pending_mshr_addr),
+    .way_out            (pending_mshr_way),
+    .mshrid_out         (pending_mshr_mshrid),
+    .cache_type_out     (pending_mshr_cache_type), 
+    .data_size_out      (pending_mshr_data_size),
+    .msg_type_out       (pending_mshr_msg_type),
+    .msg_l2_miss_out    (pending_mshr_l2_miss),
+    .src_chipid_out     (pending_mshr_src_chipid),
+    .src_x_out          (pending_mshr_src_x),
+    .src_y_out          (pending_mshr_src_y),
+    .src_fbits_out      (pending_mshr_src_fbits),
+    .sdid_out           (pending_mshr_sdid),
+    .lsid_out           (pending_mshr_lsid),
+    .miss_lsid_out      (pending_mshr_miss_lsid),
+    
+    .smc_miss_out       (pending_mshr_smc_miss),
+    
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .recycled           (pending_mshr_recycled),
+    .inv_fwd_pending    ()
+);
  // L2_CAM_MSHR
 
 l2_pipe1_ctrl ctrl(
@@ -23980,34 +22075,34 @@ l2_pipe1_ctrl ctrl(
     .msg_cache_type_S1          (msg_cache_type),
     .mshr_hit_S1                (mshr_hit),
 
-    .mshr_msg_type_S1           (mshr_msg_type),
-    .mshr_l2_miss_S1            (mshr_l2_miss),
-    .mshr_data_size_S1          (mshr_data_size),
-    .mshr_cache_type_S1         (mshr_cache_type),
 
 
 
 
 
+    .cam_mshr_msg_type_S1       (cam_mshr_msg_type),
+    .cam_mshr_l2_miss_S1        (cam_mshr_l2_miss),
+    .cam_mshr_data_size_S1      (cam_mshr_data_size),
+    .cam_mshr_cache_type_S1     (cam_mshr_cache_type), 
  // L2_CAM_MSHR
     .mshr_pending_S1            (mshr_pending),
     .mshr_pending_index_S1      (mshr_pending_index),
     .mshr_empty_slots_S1        (mshr_empty_slots),
     
 
-    .mshr_smc_miss_S1           (mshr_smc_miss),
 
 
+    .cam_mshr_smc_miss_S1       (cam_mshr_smc_miss),
  // L2_CAM_MSHR
     
 
-
-
-
-
-
-
-
+    .pending_mshr_msg_type_S1           (pending_mshr_msg_type),
+    .pending_mshr_l2_miss_S1            (pending_mshr_l2_miss),
+    .pending_mshr_data_size_S1          (pending_mshr_data_size),
+    .pending_mshr_cache_type_S1         (pending_mshr_cache_type), 
+    
+    .pending_mshr_smc_miss_S1           (pending_mshr_smc_miss),
+    
  // L2_CAM_MSHR
     .msg_data_valid_S1          (msg_data_valid),
     .addr_S1                    (addr_S1),
@@ -24182,17 +22277,6 @@ l2_pipe1_dpath dpath(
     .smt_base_addr              (smt_base_addr),
     
 
-    .mshr_addr_S1               (mshr_addr),
-    .mshr_mshrid_S1             (mshr_mshrid),
-    .mshr_way_S1                (mshr_way),
-    .mshr_src_chipid_S1         (mshr_src_chipid),
-    .mshr_src_x_S1              (mshr_src_x),
-    .mshr_src_y_S1              (mshr_src_y),
-    .mshr_src_fbits_S1          (mshr_src_fbits),
-    .mshr_sdid_S1               (mshr_sdid),
-    .mshr_lsid_S1               (mshr_lsid),
-    .mshr_miss_lsid_S1          (mshr_miss_lsid),
-    .mshr_recycled_S1           (mshr_recycled),
 
 
 
@@ -24205,19 +22289,30 @@ l2_pipe1_dpath dpath(
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
+    .cam_mshr_addr_S1           (cam_mshr_addr),
+    .cam_mshr_mshrid_S1         (cam_mshr_mshrid),
+    .cam_mshr_way_S1            (cam_mshr_way),
+    .cam_mshr_src_chipid_S1     (cam_mshr_src_chipid),
+    .cam_mshr_src_x_S1          (cam_mshr_src_x),
+    .cam_mshr_src_y_S1          (cam_mshr_src_y),
+    .cam_mshr_src_fbits_S1      (cam_mshr_src_fbits),
+    .cam_mshr_sdid_S1           (cam_mshr_sdid),
+    .cam_mshr_lsid_S1           (cam_mshr_lsid),
+    .cam_mshr_miss_lsid_S1      (cam_mshr_miss_lsid),
+    .cam_mshr_recycled_S1       (cam_mshr_recycled),
+    
+    .mshr_pending_S1            (mshr_pending),
+    .pending_mshr_addr_S1       (pending_mshr_addr),
+    .pending_mshr_mshrid_S1     (pending_mshr_mshrid),
+    .pending_mshr_way_S1        (pending_mshr_way),
+    .pending_mshr_src_chipid_S1 (pending_mshr_src_chipid),
+    .pending_mshr_src_x_S1      (pending_mshr_src_x),
+    .pending_mshr_src_y_S1      (pending_mshr_src_y),
+    .pending_mshr_src_fbits_S1  (pending_mshr_src_fbits),
+    .pending_mshr_sdid_S1       (pending_mshr_sdid),
+    .pending_mshr_lsid_S1       (pending_mshr_lsid),
+    .pending_mshr_miss_lsid_S1  (pending_mshr_miss_lsid),
+    .pending_mshr_recycled_S1   (pending_mshr_recycled),
  // L2_CAM_MSHR
 
     .dis_flush_S1               (dis_flush_S1),
@@ -24980,6 +23075,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -27159,6 +25255,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_smc_wrap(
 
     input wire clk,
@@ -27786,6 +25883,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -29020,6 +27118,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -30878,6 +28977,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_tag_wrap(
 
     input wire clk,
@@ -31515,6 +29615,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -33414,6 +31515,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_data_pgen ( 
    input    [64-1:0]   din,
 
@@ -34000,6 +32102,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -36178,17 +34281,18 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_mshr_wrap(
 
     input wire clk,
     input wire rst_n,
 
-    input wire pipe_rd_sel,
+
  // L2_CAM_MSHR
     input wire pipe_wr_sel,
 
 
-    input wire rd_en1,
+
  // L2_CAM_MSHR
     input wire cam_en1,
     input wire wr_state_en1,
@@ -36198,20 +34302,20 @@ module l2_mshr_wrap(
     input wire [120+2-1:0] data_in1,
     input wire [120+2-1:0] data_mask_in1,
 
-    input wire [3-1:0] rd_index_in1,
+
  // L2_CAM_MSHR
     input wire [3-1:0] inv_counter_rd_index_in1,
     input wire [3-1:0] wr_index_in1,
     input wire [9-1:0] addr_in1,
 
 
-    input wire rd_en2,
-    input wire cam_en2,
+
+
  // L2_CAM_MSHR
     input wire wr_state_en2,
     input wire wr_data_en2,
 
-    input wire pending_ready2,
+
  // L2_CAM_MSHR
     input wire inc_counter_en2,
     input wire [2-1:0] state_in2,
@@ -36220,19 +34324,10 @@ module l2_mshr_wrap(
     input wire [3-1:0] rd_index_in2,
     input wire [3-1:0] wr_index_in2,
 
-    input wire [9-1:0] addr_in2,
+
  // L2_CAM_MSHR
 
 
-    output wire hit,
-    output wire [3-1:0] hit_index,
-    output wire [2-1:0] state_out,
-    output wire [120+2-1:0] data_out,
-    output wire [6-1:0] inv_counter_out,
-    output wire [3:0] empty_slots,
-    output wire pending,
-    output wire [3-1:0] pending_index,
-    output wire [3-1:0] empty_index
 
 
 
@@ -36243,54 +34338,63 @@ module l2_mshr_wrap(
 
 
 
+    output reg hit,
+    output reg [3-1:0] hit_index,
+    output reg [2-1:0] rd_state_out,
+    output reg [120+2-1:0] rd_data_out,
+    // output wire [`L2_MSHR_STATE_BITS-1:0] cam_state_out,
+    output reg [120+2-1:0] cam_data_out,
+    output reg [120+2-1:0] pending_data_out,
 
-
-
-
+    output reg [6-1:0] inv_counter_out,
+    output reg [3:0] empty_slots,
+    output reg pending,
+    output reg [3-1:0] pending_index,
+    output reg [3-1:0] empty_index
  // L2_CAM_MSHR
 );
 
 
-reg rd_en;
-reg cam_en;
+
+
  // L2_CAM_MSHR
 reg wr_state_en;
 reg wr_data_en;
 
-reg pending_ready;
+
  // L2_CAM_MSHR
 reg [2-1:0] state_in;
 reg [120+2-1:0] data_in;
 reg [120+2-1:0] data_mask_in;
 
-reg [3-1:0] rd_index_in;
+
  // L2_CAM_MSHR
 reg [3-1:0] wr_index_in;
 
-reg [9-1:0] addr_in;
+
  // L2_CAM_MSHR
 
 
 
-always @ *
-begin
-    if (pipe_rd_sel)
-    begin
-        rd_en = rd_en2;
-        cam_en = cam_en2;
-        pending_ready = pending_ready2;
-        rd_index_in = rd_index_in2;
-        addr_in = addr_in2;
-    end
-    else
-    begin
-        rd_en = rd_en1;
-        cam_en = cam_en1;
-        pending_ready = pending_ready1;
-        rd_index_in = rd_index_in1;
-        addr_in = addr_in1;
-    end
-end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
  // L2_CAM_MSHR
 
 always @ *
@@ -36317,32 +34421,6 @@ end
 
 
 
-l2_mshr l2_mshr(
-    .clk                        (clk),
-    .rst_n                      (rst_n),
-    .rd_en                      (rd_en),
-    .cam_en                     (cam_en),
-    .wr_state_en                (wr_state_en),
-    .wr_data_en                 (wr_data_en),
-    .pending_ready              (pending_ready),
-    .inc_counter_en             (inc_counter_en2),
-    .state_in                   (state_in),
-    .data_in                    (data_in),
-    .data_mask_in               (data_mask_in),
-    .rd_index_in                (rd_index_in),
-    .inv_counter_rd_index_in    (inv_counter_rd_index_in1),
-    .wr_index_in                (wr_index_in),
-    .addr_in                    (addr_in),
-    .hit                        (hit),
-    .hit_index                  (hit_index),
-    .state_out                  (state_out),
-    .data_out                   (data_out),
-    .inv_counter_out            (inv_counter_out), 
-    .empty_slots                (empty_slots),
-    .pending                    (pending),
-    .pending_index              (pending_index),
-    .empty_index                (empty_index)
-);
 
 
 
@@ -36374,375 +34452,401 @@ l2_mshr l2_mshr(
 
 
 
+reg [2-1:0] state_mem_f [8-1:0];
+reg [120+2-1:0] data_mem_f [8-1:0];
+reg [6-1:0] counter_mem_f [8-1:0];
+reg [3-1:0] wbg_counter_f;
+reg [3-1:0] wbg_counter_next;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+always @ *
+begin
+    empty_slots = 0;
+    if (state_mem_f[0] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[1] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[2] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[3] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[4] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[5] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[6] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+    if (state_mem_f[7] == 2'd0)
+    begin
+        empty_slots = empty_slots + 1;
+    end
+
+end
+
+always @ *
+begin
+    if (state_mem_f[0] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd0;
+    end
+    else if (state_mem_f[1] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd1;
+    end
+    else if (state_mem_f[2] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd2;
+    end
+    else if (state_mem_f[3] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd3;
+    end
+    else if (state_mem_f[4] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd4;
+    end
+    else if (state_mem_f[5] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd5;
+    end
+    else if (state_mem_f[6] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd6;
+    end
+    else if (state_mem_f[7] == 2'd2)
+    begin
+        pending = 1'b1;
+        pending_index = 3'd7;
+    end
+    else
+    begin
+        pending = 1'b0;
+        pending_index = 3'd0;
+    end
+
+end
+
+always @ *
+begin
+    if (state_mem_f[0] == 2'd0)
+    begin
+        empty_index = 3'd0;
+    end
+    else if (state_mem_f[1] == 2'd0)
+    begin
+        empty_index = 3'd1;
+    end
+    else if (state_mem_f[2] == 2'd0)
+    begin
+        empty_index = 3'd2;
+    end
+    else if (state_mem_f[3] == 2'd0)
+    begin
+        empty_index = 3'd3;
+    end
+    else if (state_mem_f[4] == 2'd0)
+    begin
+        empty_index = 3'd4;
+    end
+    else if (state_mem_f[5] == 2'd0)
+    begin
+        empty_index = 3'd5;
+    end
+    else if (state_mem_f[6] == 2'd0)
+    begin
+        empty_index = 3'd6;
+    end
+    else if (state_mem_f[7] == 2'd0)
+    begin
+        empty_index = 3'd7;
+    end
+    else
+    begin
+        empty_index = 3'd0;
+    end
+
+end
+
+always @ *
+begin
+    // if (rd_en2)
+    // begin
+    rd_state_out = state_mem_f[rd_index_in2];
+    rd_data_out = data_mem_f[rd_index_in2];
+    // end
+    // else 
+    // if (cam_en1 && hit)
+    // begin
+    // cam_state_out = state_mem_f[hit_index];
+    cam_data_out = data_mem_f[hit_index];
+    // end
+    // else if (pending)
+    // begin
+    // pending_state_out = state_mem_f[pending_index];
+    pending_data_out = data_mem_f[pending_index];
+    // end
+    // else
+    // begin
+    //     state_out = `L2_MSHR_STATE_INVAL;
+    //     data_out = 0;
+    // end
+end
+
+always @ *
+begin
+    inv_counter_out = counter_mem_f[inv_counter_rd_index_in1];
+end
+
+always @ *
+begin
+    if(cam_en1)
+    begin
+        if ((data_mem_f[0][6+9-1:6] == addr_in1) && (state_mem_f[0] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd0;
+        end
+        else if ((data_mem_f[1][6+9-1:6] == addr_in1) && (state_mem_f[1] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd1;
+        end
+        else if ((data_mem_f[2][6+9-1:6] == addr_in1) && (state_mem_f[2] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd2;
+        end
+        else if ((data_mem_f[3][6+9-1:6] == addr_in1) && (state_mem_f[3] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd3;
+        end
+        else if ((data_mem_f[4][6+9-1:6] == addr_in1) && (state_mem_f[4] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd4;
+        end
+        else if ((data_mem_f[5][6+9-1:6] == addr_in1) && (state_mem_f[5] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd5;
+        end
+        else if ((data_mem_f[6][6+9-1:6] == addr_in1) && (state_mem_f[6] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd6;
+        end
+        else if ((data_mem_f[7][6+9-1:6] == addr_in1) && (state_mem_f[7] != 2'd0))
+        begin
+            hit = 1'b1;
+            hit_index = 3'd7;
+        end
+        else
+        begin
+            hit = 1'b0;
+            hit_index = 3'd0;
+        end
+    end
+    else
+    begin
+        hit = 1'b0;
+        hit_index = 3'd0;
+    end
+
+end
+
+
+
+
+always @ (posedge clk)
+begin
+    if (!rst_n)
+    begin
+        state_mem_f[0] <= 2'd0;
+        state_mem_f[1] <= 2'd0;
+        state_mem_f[2] <= 2'd0;
+        state_mem_f[3] <= 2'd0;
+        state_mem_f[4] <= 2'd0;
+        state_mem_f[5] <= 2'd0;
+        state_mem_f[6] <= 2'd0;
+        state_mem_f[7] <= 2'd0;
+
+    end
+    else if (wr_state_en)
+    begin
+        state_mem_f[wr_index_in] <= state_in;
+        if (pending && pending_ready1 && (pending_index != wr_index_in))
+        begin
+            //SMC miss entries are locked in the mshr
+            if (data_mem_f[pending_index][117+2])
+            begin
+                state_mem_f[pending_index] <= 2'd1;
+            end
+            else
+            begin
+                state_mem_f[pending_index] <= 2'd0;
+            end
+        end
+    end
+    else if (pending && pending_ready1)
+    begin
+        if (data_mem_f[pending_index][117+2])
+        begin
+            state_mem_f[pending_index] <= 2'd1;
+        end
+        else
+        begin
+            state_mem_f[pending_index] <= 2'd0;
+        end
+    end
+    else if (cam_en1 && hit && (data_mem_f[hit_index][59+2:52+2] == 8'd13))
+    begin
+        state_mem_f[hit_index] <= 2'd2;
+    end
+    //Clear entries with WB guard requests if they occupy more entries than the threshold
+    else if (wbg_counter_f > 4)
+    begin
+        if ((state_mem_f[0] == 2'd1) && (data_mem_f[0][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[0] <= 2'd2;
+        end
+        if ((state_mem_f[1] == 2'd1) && (data_mem_f[1][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[1] <= 2'd2;
+        end
+        if ((state_mem_f[2] == 2'd1) && (data_mem_f[2][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[2] <= 2'd2;
+        end
+        if ((state_mem_f[3] == 2'd1) && (data_mem_f[3][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[3] <= 2'd2;
+        end
+        if ((state_mem_f[4] == 2'd1) && (data_mem_f[4][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[4] <= 2'd2;
+        end
+        if ((state_mem_f[5] == 2'd1) && (data_mem_f[5][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[5] <= 2'd2;
+        end
+        if ((state_mem_f[6] == 2'd1) && (data_mem_f[6][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[6] <= 2'd2;
+        end
+        if ((state_mem_f[7] == 2'd1) && (data_mem_f[7][59+2:52+2] == 8'd13))
+        begin
+            state_mem_f[7] <= 2'd2;
+        end
+
+    end
+end
+
+
+
+always @ *
+begin
+    if(wr_state_en && wr_data_en && (state_in == 2'd1) 
+    && (data_in[59+2:52+2] == 8'd13) && (data_mask_in[59+2:52+2] == {8{1'b1}}))
+    begin
+        wbg_counter_next = wbg_counter_f + 1;
+    end
+    else if ((~wr_state_en) && (~(pending && pending_ready1)) 
+          && (cam_en1 && hit && (data_mem_f[hit_index][59+2:52+2] == 8'd13)))
+    begin
+        wbg_counter_next = wbg_counter_f - 1;
+    end
+    else
+    begin
+        wbg_counter_next = wbg_counter_f;
+    end
+end
+
+always @ (posedge clk)
+begin
+    if (!rst_n)
+    begin
+        wbg_counter_f <= 0;
+    end
+    else   
+    begin
+        wbg_counter_f <= wbg_counter_next;
+    end
+end
+
+always @ (posedge clk)
+begin
+    if (!rst_n)
+    begin
+        counter_mem_f[0] <= {6{1'b0}};
+        counter_mem_f[1] <= {6{1'b0}};
+        counter_mem_f[2] <= {6{1'b0}};
+        counter_mem_f[3] <= {6{1'b0}};
+        counter_mem_f[4] <= {6{1'b0}};
+        counter_mem_f[5] <= {6{1'b0}};
+        counter_mem_f[6] <= {6{1'b0}};
+        counter_mem_f[7] <= {6{1'b0}};
+
+    end
+    else if (pending && pending_ready1)
+    begin
+        counter_mem_f[pending_index] <= {6{1'b0}};
+        if (inc_counter_en2 && (pending_index != wr_index_in))
+        begin
+            counter_mem_f[wr_index_in] <= counter_mem_f[wr_index_in] + 1;
+        end
+    end
+    else if (inc_counter_en2)
+    begin
+        counter_mem_f[wr_index_in] <= counter_mem_f[wr_index_in] + 1;
+    end
+end
+
+
+always @ (posedge clk)
+begin
+    if (!rst_n)
+    begin
+        data_mem_f[0] <= {120+2{1'b0}};
+        data_mem_f[1] <= {120+2{1'b0}};
+        data_mem_f[2] <= {120+2{1'b0}};
+        data_mem_f[3] <= {120+2{1'b0}};
+        data_mem_f[4] <= {120+2{1'b0}};
+        data_mem_f[5] <= {120+2{1'b0}};
+        data_mem_f[6] <= {120+2{1'b0}};
+        data_mem_f[7] <= {120+2{1'b0}};
+
+    end
+    else if (wr_data_en)
+    begin
+        data_mem_f[wr_index_in] <= (data_mem_f[wr_index_in] & (~data_mask_in))
+                                 | (data_in & data_mask_in);
+    end
+    else
+    begin
+        data_mem_f[wr_index_in] <= data_mem_f[wr_index_in];
+    end
+end
  // L2_CAM_MSHR
 
 endmodule
@@ -37302,6 +35406,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -39524,6 +37629,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_pipe1_buf_out(
 
     input wire clk,
@@ -40913,6 +39019,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_pipe1_ctrl(
 
     input wire clk,
@@ -40944,38 +39051,38 @@ module l2_pipe1_ctrl(
     //input from the mshr
     input wire mshr_hit_S1,
 
-    input wire [8-1:0] mshr_msg_type_S1,
-    input wire [1-1:0] mshr_l2_miss_S1,
-    input wire [3-1:0] mshr_data_size_S1,
-    input wire [1-1:0] mshr_cache_type_S1,
+
+
+
+
  // L2_CAM_MSHR
     input wire mshr_pending_S1,
     input wire [3-1:0] mshr_pending_index_S1,
     input wire [3:0] mshr_empty_slots_S1,
     
 
-    input wire mshr_smc_miss_S1,
+
  // L2_CAM_MSHR
     
 
 
+    //input from the mshr
+    input wire [8-1:0] cam_mshr_msg_type_S1,
+    input wire [1-1:0] cam_mshr_l2_miss_S1,
+    input wire [3-1:0] cam_mshr_data_size_S1,
+    input wire [1-1:0] cam_mshr_cache_type_S1,
+    
+    input wire cam_mshr_smc_miss_S1,
+    
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    //input from the mshr
+    input wire [8-1:0] pending_mshr_msg_type_S1,
+    input wire [1-1:0] pending_mshr_l2_miss_S1,
+    input wire [3-1:0] pending_mshr_data_size_S1,
+    input wire [1-1:0] pending_mshr_cache_type_S1,
+    
+    input wire pending_mshr_smc_miss_S1,
+    
  // L2_CAM_MSHR
 
     //data valid signal from the input buffer
@@ -41264,9 +39371,9 @@ begin
     if (msg_from_mshr_S1)
     begin
 
-        msg_type_mux_S1 = mshr_msg_type_S1;
 
 
+        msg_type_mux_S1 = pending_mshr_msg_type_S1;
  // L2_CAM_MSHR
     end
     else
@@ -41524,9 +39631,9 @@ begin
     if (msg_from_mshr_S1)
     begin
 
-        data_size_S1 = mshr_data_size_S1;
 
 
+        data_size_S1 = pending_mshr_data_size_S1;
  // L2_CAM_MSHR
     end
     else
@@ -41540,9 +39647,9 @@ begin
     if (msg_from_mshr_S1)
     begin
 
-        cache_type_S1 = mshr_cache_type_S1;
 
 
+        cache_type_S1 = pending_mshr_cache_type_S1;
  // L2_CAM_MSHR
     end
     else
@@ -41830,9 +39937,9 @@ begin
     if (msg_from_mshr_S1)
     begin
 
-        l2_miss_S1 = mshr_l2_miss_S1;
 
 
+        l2_miss_S1 = pending_mshr_l2_miss_S1;
  // L2_CAM_MSHR
     end
     else
@@ -41892,10 +39999,9 @@ begin
         l2_miss_S2_f <= l2_miss_S1;
         
 
-        mshr_smc_miss_S2_f <= mshr_smc_miss_S1;
 
 
-
+        mshr_smc_miss_S2_f <= (mshr_pending_S1 == 1'b1) ? pending_mshr_smc_miss_S1 : (mshr_hit_S1 && cam_mshr_smc_miss_S1);
  // L2_CAM_MSHR
         
         msg_from_mshr_S2_f <= msg_from_mshr_S1;
@@ -41975,11 +40081,12 @@ begin
 end
 
 
-
 reg [27-1:0] cs_S2;
 
 always @ *
 begin
+    // default assignment to prevent latch inferral
+    cs_S2 = {27{1'bx}};
     if (valid_S2)
     begin
         if (special_addr_type_S2_f)
@@ -42773,20 +40880,12 @@ reg [2-1:0] l2_load_data_subline_S2_next;
 
 always @ *
 begin
-
     dir_clk_en_S2 = !stall_S2 && cs_S2[22];
-
-
- // L2_CAM_MSHR
 end
 
 always @ *
 begin
-
     dir_rdw_en_S2 = !stall_S2 && cs_S2[21];
-
-
- // L2_CAM_MSHR
 end
 
 
@@ -42797,20 +40896,12 @@ end
 
 always @ *
 begin
-
     data_clk_en_S2 = !stall_real_S2 && cs_S2[18];
-
-
- // L2_CAM_MSHR
 end
 
 always @ *
 begin
-
     data_rdw_en_S2 = !stall_real_S2 && cs_S2[17];
-
-
- // L2_CAM_MSHR
 end
 
 always @ *
@@ -43943,7 +42034,7 @@ begin
                     end
                     endcase
                 end
-                8'd60:   // Jsut same as a store req 
+                8'd60:   // Jsut same as a store req
                 begin
                     case (l2_way_state_mesi_S4)
                     2'b00:
@@ -46436,6 +44527,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // devices.xml
 
 
@@ -46451,44 +44543,44 @@ module l2_pipe1_dpath(
     //Inputs to Stage 1   
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
     //inputs from the mshr
-    input wire [40-1:0] mshr_addr_S1,
-    input wire [8-1:0] mshr_mshrid_S1,
-    input wire [2-1:0] mshr_way_S1,
-    input wire [14-1:0] mshr_src_chipid_S1,
-    input wire [8-1:0] mshr_src_x_S1,
-    input wire [8-1:0] mshr_src_y_S1,
-    input wire [4-1:0] mshr_src_fbits_S1,
-    input wire [10-1:0] mshr_sdid_S1,
-    input wire [6-1:0] mshr_lsid_S1,
-    input wire [6-1:0] mshr_miss_lsid_S1,
-    input wire mshr_recycled_S1,
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    input wire [40-1:0] cam_mshr_addr_S1,
+    input wire [8-1:0] cam_mshr_mshrid_S1,
+    input wire [2-1:0] cam_mshr_way_S1,
+    input wire [14-1:0] cam_mshr_src_chipid_S1,
+    input wire [8-1:0] cam_mshr_src_x_S1,
+    input wire [8-1:0] cam_mshr_src_y_S1,
+    input wire [4-1:0] cam_mshr_src_fbits_S1,
+    input wire [10-1:0] cam_mshr_sdid_S1,
+    input wire [6-1:0] cam_mshr_lsid_S1,
+    input wire [6-1:0] cam_mshr_miss_lsid_S1,
+    input wire cam_mshr_recycled_S1,
+    //inputs from the mshr
+    input wire mshr_pending_S1,
+    input wire [40-1:0] pending_mshr_addr_S1,
+    input wire [8-1:0] pending_mshr_mshrid_S1,
+    input wire [2-1:0] pending_mshr_way_S1,
+    input wire [14-1:0] pending_mshr_src_chipid_S1,
+    input wire [8-1:0] pending_mshr_src_x_S1,
+    input wire [8-1:0] pending_mshr_src_y_S1,
+    input wire [4-1:0] pending_mshr_src_fbits_S1,
+    input wire [10-1:0] pending_mshr_sdid_S1,
+    input wire [6-1:0] pending_mshr_lsid_S1,
+    input wire [6-1:0] pending_mshr_miss_lsid_S1,
+    input wire pending_mshr_recycled_S1,
  // L2_CAM_MSHR
     input wire dis_flush_S1,
 
@@ -46715,15 +44807,6 @@ begin
     if (msg_from_mshr_S1)
     begin
 
-        addr_S1 = mshr_addr_S1;
-        mshrid_S1 = mshr_mshrid_S1;
-        src_chipid_S1 = mshr_src_chipid_S1;
-        src_x_S1 = mshr_src_x_S1;   
-        src_y_S1 = mshr_src_y_S1;   
-        src_fbits_S1 = mshr_src_fbits_S1;
-        sdid_S1 = mshr_sdid_S1;
-        lsid_S1 = mshr_lsid_S1;
-        recycled_S1 = mshr_recycled_S1;
 
 
 
@@ -46734,6 +44817,15 @@ begin
 
 
 
+        addr_S1 = pending_mshr_addr_S1;
+        mshrid_S1 = pending_mshr_mshrid_S1;
+        src_chipid_S1 = pending_mshr_src_chipid_S1;
+        src_x_S1 = pending_mshr_src_x_S1;
+        src_y_S1 = pending_mshr_src_y_S1;
+        src_fbits_S1 = pending_mshr_src_fbits_S1;
+        sdid_S1 = pending_mshr_sdid_S1;
+        lsid_S1 = pending_mshr_lsid_S1;
+        recycled_S1 = pending_mshr_recycled_S1;
  // L2_CAM_MSHR
     end
     else
@@ -46877,14 +44969,12 @@ begin
         sdid_S2_f <= sdid_S1;
         lsid_S2_f <= lsid_S1;
 
-        mshr_way_S2_f <= mshr_way_S1;
-        mshr_miss_lsid_S2_f <= mshr_miss_lsid_S1;
 
 
 
-
-
-
+        // trin: ambiguous??
+        mshr_way_S2_f <= (mshr_pending_S1 == 1'b1) ? pending_mshr_way_S1 : cam_mshr_way_S1;
+        mshr_miss_lsid_S2_f <= (mshr_pending_S1 == 1'b1) ? pending_mshr_miss_lsid_S1 : cam_mshr_miss_lsid_S1;
  // L2_CAM_MSHR
         atomic_read_data_S2_f <= atomic_read_data_S1_f;
         recycled_S2_f <= recycled_S1;
@@ -47979,16 +46069,16 @@ end
 
 
 
-// monitor for checking race condition
-always @ (posedge clk) begin
-    if (data_stalled_skid_buffer_en_S3_f) begin
-        if (data_stalled_skid_buffer_S3_f != data_data_S3) begin
-            // check whether the saved data is equaled to the current data
-            $display("Error: L2 pipe1 data access race condition!");
-            $finish();
-        end
-    end
-end
+
+
+
+
+
+
+
+
+
+
  // L2_CAM_MSHR
 
 
@@ -49767,6 +47857,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_pipe2_buf_in(
 
     input wire clk,
@@ -50824,6 +48915,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -53683,6 +51775,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // devices.xml
 
 
@@ -55672,6 +53765,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l2_priority_encoder_1(
     input wire [1:0] data_in,
     output wire [0:0] data_out,
@@ -56393,6 +54487,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -58460,6 +56555,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 

@@ -612,1927 +612,6 @@ end
 
 endmodule
 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: iop.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-//-*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-//  Description:	Global header file that contain definitions that 
-//                      are common/shared at the IOP chip level
-*/
-////////////////////////////////////////////////////////////////////////
-
-
-// Address Map Defines
-// ===================
-
-
-
-
-// CMP space
-
-
-
-// IOP space
-
-
-
-
-                               //`define ENET_ING_CSR     8'h84
-                               //`define ENET_EGR_CMD_CSR 8'h85
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2 space
-
-
-
-// More IOP space
-
-
-
-
-
-//Cache Crossbar Width and Field Defines
-//======================================
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//bits 133:128 are shared by different fields
-//for different packet types.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define CPX_INV_PA_HI   116
-//`define CPX_INV_PA_LO   112
-
-
-
-
-
-
-// cache invalidation format
-// `define CPX_INV_DCACHE_WORD0_VAL 0
-// `define CPX_INV_ICACHE_WORD0_VAL 1
-// `define CPX_INV_WORD0_WAY 5:2
-// `define CPX_INV_DCACHE_WORD0_VAL 6
-// `define CPX_INV_ICACHE_WORD0_VAL 7
-// `define CPX_INV_WORD0_WAY 11:8
-// `define CPX_INV_DCACHE_WORD0_VAL 12
-// // `define CPX_INV_ICACHE_WORD0_VAL 13
-// `define CPX_INV_WORD0_WAY 17:14
-// `define CPX_INV_DCACHE_WORD0_VAL 18
-// // `define CPX_INV_ICACHE_WORD0_VAL 19
-// `define CPX_INV_WORD0_WAY 23:20
-
-
-
-
-// 4 extra bits for bigger icache/dcache
-// up to 512KB l1 icache, 256KB l1 dcache
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Pico defines
-
-
-
-
-
-
-
-
-
-
-
-
-
-//End cache crossbar defines
-
-
-// Number of COS supported by EECU 
-
-
-
-// 
-// BSC bus sizes
-// =============
-//
-
-// General
-
-
-
-
-// CTags
-
-
-
-
-
-
-
-
-
-
-
-
-
-// reinstated temporarily
-
-
-
-
-// CoS
-
-
-
-
-
-
-// L2$ Bank
-
-
-
-// L2$ Req
-
-
-
-
-
-
-
-
-
-
-
-
-
-// L2$ Ack
-
-
-
-
-
-
-
-
-// Enet Egress Command Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Enet Egress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-
-// This is cleaved in between Egress Datapath Ack's
-
-
-
-
-
-
-
-
-// Enet Egress Datapath
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: EEPU
-// Tag is: TLEN, SOF, EOF, QID = 15
-
-
-
-
-
-
-// Nack + Tag Info + CTag
-
-
-
-
-// ENET Ingress Queue Management Req
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Queue Management Ack
-
-
-
-
-
-
-
-
-// Enet Ingress Packet Unit
-
-
-
-
-
-
-
-
-
-
-
-
-// ENET Ingress Packet Unit Ack
-
-
-
-
-
-
-
-// In-Order / Ordered Queue: PCI
-// Tag is: CTAG
-
-
-
-
-
-// PCI-X Request
-
-
-
-
-
-
-
-
-
-
-
-// PCI_X Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-//
-// BSC array sizes
-//================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-// ECC syndrome bits per memory element
-
-
-
-
-//
-// BSC Port Definitions
-// ====================
-//
-// Bits 7 to 4 of curr_port_id
-
-
-
-
-
-
-
-
-// Number of ports of each type
-
-
-// Bits needed to represent above
-
-
-// How wide the linked list pointers are
-// 60b for no payload (2CoS)
-// 80b for payload (2CoS)
-
-//`define BSC_OBJ_PTR   80
-//`define BSC_HD1_HI    69
-//`define BSC_HD1_LO    60
-//`define BSC_TL1_HI    59
-//`define BSC_TL1_LO    50
-//`define BSC_CT1_HI    49
-//`define BSC_CT1_LO    40
-//`define BSC_HD0_HI    29
-//`define BSC_HD0_LO    20
-//`define BSC_TL0_HI    19
-//`define BSC_TL0_LO    10
-//`define BSC_CT0_HI     9
-//`define BSC_CT0_LO     0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// I2C STATES in DRAMctl
-
-
-
-
-
-
-
-//
-// IOB defines
-// ===========
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//`define IOB_INT_STAT_WIDTH   32
-//`define IOB_INT_STAT_HI      31
-//`define IOB_INT_STAT_LO       0
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// fixme - double check address mapping
-// CREG in `IOB_INT_CSR space
-
-
-
-
-
-
-
-
-
-
-// CREG in `IOB_MAN_CSR space
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Address map for TAP access of SPARC ASI
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// CIOP UCB Bus Width
-// ==================
-//
-//`define IOB_EECU_WIDTH       16  // ethernet egress command
-//`define EECU_IOB_WIDTH       16
-
-//`define IOB_NRAM_WIDTH       16  // NRAM (RLDRAM previously)
-//`define NRAM_IOB_WIDTH        4
-
-
-
-
-//`define IOB_ENET_ING_WIDTH   32  // ethernet ingress
-//`define ENET_ING_IOB_WIDTH    8
-
-//`define IOB_ENET_EGR_WIDTH    4  // ethernet egress
-//`define ENET_EGR_IOB_WIDTH    4
-
-//`define IOB_ENET_MAC_WIDTH    4  // ethernet MAC
-//`define ENET_MAC_IOB_WIDTH    4
-
-
-
-
-//`define IOB_BSC_WIDTH         4  // BSC
-//`define BSC_IOB_WIDTH         4
-
-
-
-
-
-
-
-//`define IOB_CLSP_WIDTH        4  // clk spine unit
-//`define CLSP_IOB_WIDTH        4
-
-
-
-
-
-//
-// CIOP UCB Buf ID Type
-// ====================
-//
-
-
-
-//
-// Interrupt Device ID
-// ===================
-//
-// Caution: DUMMY_DEV_ID has to be 9 bit wide
-//          for fields to line up properly in the IOB.
-
-
-
-//
-// Soft Error related definitions 
-// ==============================
-//
-
-
-
-//
-// CMP clock
-// =========
-//
-
-
-
-
-//
-// NRAM/IO Interface
-// =================
-//
-
-
-
-
-
-
-
-
-
-
-//
-// NRAM/ENET Interface
-// ===================
-//
-
-
-
-
-
-
-
-//
-// IO/FCRAM Interface
-// ==================
-//
-
-
-
-
-
-
-//
-// PCI Interface
-// ==================
-// Load/store size encodings
-// -------------------------
-// Size encoding
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 100 - quad
-
-
-
-
-
-
-//
-// JBI<->SCTAG Interface
-// =======================
-// Outbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Inbound Header Format
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// JBI->IOB Mondo Header Format
-// ============================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// JBI->IOB Mondo Bus Width/Cycle
-// ==============================
-// Cycle  1 Header[15:8]
-// Cycle  2 Header[ 7:0]
-// Cycle  3 J_AD[127:120]
-// Cycle  4 J_AD[119:112]
-// .....
-// Cycle 18 J_AD[  7:  0]
-
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-/////////////////////////////////////////////////////////////////////////////////////////////
-// 63         50 49      42 41      34 33           30 29      22 21                 0   
-// ------------------------------------------------------------------------------------
-// |            |          |          |               |          |                    |
-// |  Chip ID   |  Dest X  |  Dest Y  |  Final Route  |  Length  |    Header Payload  | 
-// |            |          |          |               |          |                    |
-// ------------------------------------------------------------------------------------
-////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-
-
-
-
-
-
- //whether the routing is based on chipid or x y position
- //`define    ROUTING_CHIP_ID
- 
-
- //defines for different topology, only one should be active
- //`define    NETWORK_TOPO_2D_MESH
- //`define    NETWORK_TOPO_3D_MESH
- 
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: sys.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// -*- verilog -*-
-////////////////////////////////////////////////////////////////////////
-/*
-//
-// Description:		Global header file that contain definitions that 
-//                      are common/shared at the systme level
-*/
-////////////////////////////////////////////////////////////////////////
-//
-// Setting the time scale
-// If the timescale changes, JP_TIMESCALE may also have to change.
-`timescale	1ps/1ps
-`default_nettype wire
-
-//
-// Number of threads in a core
-// ===========================
-//
-
-//`define CONFIG_NUM_THREADS // This must be defined for any of below to work
-//`define THREADS_1
-//`define THREADS_2
-//`define THREADS_3
-
-
-//
-// JBUS clock
-// =========
-//
-// `define SYSCLK_PERIOD   5000
-
-
-// Afara Link Defines
-// ==================
-
-// Reliable Link
-
-
-
-
-// Afara Link Objects
-
-
-// Afara Link Object Format - Reliable Link
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Congestion
-
-
-
-  
-
-
-
-
-
-
-
-// Afara Link Object Format - Acknowledge
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Request
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Afara Link Object Format - Message
-
-
-
-// Acknowledge Types
-
-
-
-
-// Request Types
-
-
-
-
-
-// Afara Link Frame
-
-
-
-//
-// UCB Packet Type
-// ===============
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// UCB Data Packet Format
-// ======================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Size encoding for the UCB_SIZE_HI/LO field
-// 000 - byte
-// 001 - half-word
-// 010 - word
-// 011 - double-word
-// 111 - quad-word
-
-
-
-
-
-
-
-//
-// UCB Interrupt Packet Format
-// ===========================
-//
-
-
-
-
-
-
-
-
-
-
-//`define UCB_THR_HI             9      // (6) cpu/thread ID shared with
-//`define UCB_THR_LO             4             data packet format
-//`define UCB_PKT_HI             3      // (4) packet type shared with
-//`define UCB_PKT_LO             0      //     data packet format
-
-
-
-
-
-
-
-//
-// FCRAM Bus Widths
-// ================
-//
-
-
-
-
-
-
-//
-// ENET clock periods
-// ==================
-//
-// `define AXGRMII_CLK_PERIOD          6400 // 312.5MHz/2
-// `define ENET_GMAC_CLK_PERIOD        8000 // 125MHz
-
-
-//
-// JBus Bridge defines
-// =================
-//
-// `define      SYS_UPA_CLK        `SYS.upa_clk
-// `define      SYS_J_CLK          `SYS.j_clk
-// `define      SYS_P_CLK          `SYS.p_clk
-// `define      SYS_G_CLK          `SYS.g_clk
-// `define      JP_TIMESCALE       `timescale 1 ps / 1 ps
-// `define      PCI_CLK_PERIOD     15152                  //  66 MHz
-// `define      UPA_RD_CLK_PERIOD  6666                   // 150 MHz
-// `define      UPA_REF_CLK_PERIOD 7576                   // 132 MHz
-// `define      ICHIP_CLK_PERIOD   30304                  //  33 MHz
-
-
-//
-// PCI Device Address Configuration
-// ================================
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// Modified by Princeton University on June 9th, 2015
-/*
-* ========== Copyright Header Begin ==========================================
-* 
-* OpenSPARC T1 Processor File: tlu.h
-* Copyright (c) 2006 Sun Microsystems, Inc.  All Rights Reserved.
-* DO NOT ALTER OR REMOVE COPYRIGHT NOTICES.
-* 
-* The above named program is free software; you can redistribute it and/or
-* modify it under the terms of the GNU General Public
-* License version 2 as published by the Free Software Foundation.
-* 
-* The above named program is distributed in the hope that it will be 
-* useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
-* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
-* General Public License for more details.
-* 
-* You should have received a copy of the GNU General Public
-* License along with this work; if not, write to the Free Software
-* Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA 02110-1301, USA.
-* 
-* ========== Copyright Header End ============================================
-*/
-// ifu trap types
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// modified for hypervisor support
-//
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-// modified due to bug 2588
-// `define	TSA_PSTATE_VRANGE2_LO 16 
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-//
-// added due to Niagara SRAMs methodology
-// The following defines have been replaced due
-// the memory macro replacement from:
-// bw_r_rf32x144 -> 2x bw_r_rf32x80
-/*
-`define	TSA_MEM_WIDTH     144 
-`define	TSA_HTSTATE_HI    142 //  3 bits 
-`define	TSA_HTSTATE_LO    140 
-`define	TSA_TPC_HI        138 // 47 bits 
-`define	TSA_TPC_LO         92
-`define	TSA_TNPC_HI        90 // 47 bits
-`define	TSA_TNPC_LO        44 
-`define	TSA_TSTATE_HI      40 // 29 bits 
-`define	TSA_TSTATE_LO      12 
-`define	TSA_TTYPE_HI        8 //  9 bits
-`define	TSA_TTYPE_LO        0
-`define	TSA_MEM_CWP_LO	   12
-`define	TSA_MEM_CWP_HI	   14
-`define	TSA_MEM_PSTATE_LO  15
-`define	TSA_MEM_PSTATE_HI  22
-`define	TSA_MEM_ASI_LO	   23
-`define	TSA_MEM_ASI_HI	   30
-`define	TSA_MEM_CCR_LO	   31
-`define	TSA_MEM_CCR_HI	   38
-`define	TSA_MEM_GL_LO	   39 
-`define	TSA_MEM_GL_HI	   40 
-*/
-
-
-
-
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-
-
-// HPSTATE position definitions within wsr
-
-
-
-
-
-
-// TSTATE postition definitions within wsr
-
-
-
-
-
-
-
-// modified due to bug 2588
-
-
-// added for bug 2584 
-
-
-
-
-//
-
-
-
-
-
-
-
-//
-// tick_cmp and stick_cmp definitions
-
-
-
-
-
-//
-// PIB WRAP
-
-
-
-// HPSTATE postition definitions
-
-
-
-
-
-
-// HTBA definitions
-
-
-
-
-// TBA definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// added for the hypervisor support
-
-
-// modified due to bug 2588
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// compressed PSTATE WSR definitions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// ASI_QUEUE for hypervisor
-// Queues are: CPU_MONODO
-//             DEV_MONODO
-//             RESUMABLE_ERROR
-//             NON_RESUMABLE_ERROR
-//
-
-
-
-
-
-
-
-// for address range checking
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//
-// Niagara scratch-pads
-// VA address of 0x20 and 0x28 are exclusive to hypervisor
-// 
-
-
-
-
-
-
-
-//
-// range checking 
-
-
-
-
-
-
-
-// PIB related definitions
-// Bit definition for events
-
-
-
-
-
-
-
-
-
-// 
-// PIB related definitions
-// PCR and PIC address definitions
-
-
-
-// 
-// PCR bit definitions
-
-
-
-
-
-
-
-//
-
-
-
-
-
-
-
-
-
-// PIC definitions
-
-
-
-
-
-
-
-
-// PIC  mask bit position definitions
-
-
-
-
-
-
-
-
-
-
-// added define from sparc_tlu_int.v 
-
-
-
-
-
-
-
-
-
-
-//
-// shadow scan related definitions 
-
-// modified due to logic redistribution
-// `define TCL_SSCAN_WIDTH 12 
-
-
-
-
-
-// `define TCL_SSCAN_LO 51 
-
-
-
-
-// 
-// position definitions - TDP
-
-
-
-
-
-
-// 
-// position definitions - TCL
-
-
-
-
-// 
-// To speedup POR for verification purposes
-
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-//==================================================================================================
-//  Filename      : jtag.vh
-//  Created On    : 2014-01-31 12:52:57
-//  Last Modified : 2015-01-28 16:54:05
-//  Revision      :
-//  Author        : Tri Nguyen
-//  Company       : Princeton University
-//  Email         : trin@princeton.edu
-//
-//  Description   : Parallel JTAG/debug controller defines
-//==================================================================================================
-
-
-/////////////////////////////////
-// Chip ID in JTAG
-/////////////////////////////////
-
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG TAP
-/////////////////////////////////
-// copied from ctu.h
-
-
-
-
-
-
-
-
-// `define TAP_CREG_ADDR          6'h08
-// `define TAP_CREG_WDATA         6'h09
-// `define TAP_CREG_RDATA         6'h0a
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-
-
-
-// `define TAP_CREG_SCRATCH       6'h0b
-// `define TAP_IOB_WR             6'h0c
-// `define TAP_IOB_RD             6'h0d
-// `define TAP_IOB_WADDR          6'h0e
-// `define TAP_IOB_WDATA          6'h0f
-// `define TAP_IOB_RADDR          6'h10
-
-// `define TAP_MBIST_SERIAL       6'h14
-// `define TAP_MBIST_PARALLEL     6'h15
-// `define TAP_MBIST_RESULT       6'h16
-// `define TAP_MBIST_ABORT        6'h17
-
-// `define TAP_PLL_BYPASS         6'h18
-
-// `define TAP_CLK_STOP_ID        6'h1a
-// `define TAP_CLK_SEL            6'h1b  //mask ff00 for ck src
-
-// `define TAP_SSCAN_T0           6'h1c
-// `define TAP_SSCAN_T1           6'h1d
-// `define TAP_SSCAN_T2           6'h1e
-// `define TAP_SSCAN_T3           6'h1f
-
-// `define TAP_SCAN_PARALLEL      6'h20
-// `define TAP_SCAN_SERIAL        6'h21
-// `define TAP_SCAN_MTEST_LONG    6'h22
-// `define TAP_SCAN_MTEST_SHORT   6'h23
-// `define TAP_SCAN_BYPASS_EN     6'h24
-// `define TAP_SCAN_NSTEP         6'h25
-// `define TAP_SCAN_DUMP          6'h26
-
-// `define TAP_EFC_READ           6'h28 
-// `define TAP_EFC_BYPASS_DATA    6'h29 
-// `define TAP_EFC_BYPASS         6'h2a 
-// `define TAP_EFC_READ_MODE      6'h2b 
-// `define TAP_EFC_COL_ADDR       6'h2c
-// `define TAP_EFC_ROW_ADDR       6'h2d
-// `define TAP_EFC_DEST_SAMPLE    6'h2e
-
-
-
-
-
-/////////////////////////////////
-// CTAP register select defines
-/////////////////////////////////
-
-// `define CTAP_DATA_REG_WIDTH 64
-
-
-
-
-
-
-/////////////////////////////////
-// JTAG instructions
-/////////////////////////////////
-
-// header
-
-
-// lengths of header
-
-
-
-
-
-// definitions of operations
-// `define JTAG_REQ_OP_READ_SHADOWSCAN 8'd1
-
-// `define JTAG_REQ_OP_STALL_CORE 8'd3
-
-
-// `define JTAG_REQ_OP_WRITE_PC 8'd6
-// `define JTAG_REQ_OP_WRITE_THREADSTATE 8'd7
-// `define JTAG_REQ_OP_CPX_INTERRUPT 8'd8
-
-
-
-
-
-
-
-
-// definitions of misc field for read/write rtap
-
-
-
-
-
-
-
-
-
-
-
-// `define JTAG_RTAP_ID__REG 16'd
-
-
-// definitions of tileids
-// `define CTAP_ID_BROADCAST 6'b111111
-
-
-
-// mask of header
-
-
-
-
-// misc is used for stall bit at bit 0
-
-// address reg
-
-
-
-
-
-// masks in address reg
-
-
-
-
-// data reg
-
-
-
-// // From CTAP to RTAP
-// // these valid vector assumes 4b bus. so 32b vector would be 128b
-// `define CTAP_REQ_VEC_WHOLE_PACKET 32'hffffffff
-// // header has first 32b
-// `define CTAP_REQ_VEC_HEADER 32'h000000ff
-// // half is 64b, includes the addresses
-// `define CTAP_REQ_VEC_HALF 32'h0000ffff
-
-
-
-
-
-// RTAP returns
-
-
-
-
-
-
-// RTAP states
-
-
-
-
-
-
-
-
-
-
-
-
-// ORAM specifics
-
-
-
-/////////////////////////////////
-// UCB related
-/////////////////////////////////
-
-
-
-
-// CTAP_UCB_TILEID_MASK
-
-// RTAP_INSTRUCTION_MASK
-// RTAP_INSTRUCTION_RETURN_SHADOWSCAN
-/*
-Copyright (c) 2015 Princeton University
-All rights reserved.
-
-Redistribution and use in source and binary forms, with or without
-modification, are permitted provided that the following conditions are met:
-    * Redistributions of source code must retain the above copyright
-      notice, this list of conditions and the following disclaimer.
-    * Redistributions in binary form must reproduce the above copyright
-      notice, this list of conditions and the following disclaimer in the
-      documentation and/or other materials provided with the distribution.
-    * Neither the name of Princeton University nor the
-      names of its contributors may be used to endorse or promote products
-      derived from this software without specific prior written permission.
-
-THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
-ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
-WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
-DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
-DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
-(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
-LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
-ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
-(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
-SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
-*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 /*
 Copyright (c) 2015 Princeton University
 All rights reserved.
@@ -2563,7 +642,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //==================================================================================================
 //  Filename      : clk_gating_latch.v
 //  Created On    : 2015-01-26 14:10:43
-//  Last Modified : 2015-01-26 15:13:40
+//  Last Modified : 2019-04-17 11:56:55
 //  Revision      :
 //  Author        : Tri Nguyen
 //  Company       : Princeton University
@@ -2578,20 +657,32 @@ module clk_gating_latch (
     output wire clk_out
 );
 
-wire clk_en_sync;
-reg clk_en_sync_latch;
+// use clock buffer on FPGA
+// note that not all FPGAs have enough of these available
+// so we use the latch as a fallback on certain boards (e.g., vc707)
 
-assign clk_out = clk & clk_en_sync_latch;
 
-synchronizer sync(
-    .clk            (clk),
-    .presyncdata    (clk_en),
-    .syncdata       (clk_en_sync)
-);
 
-// clk_en_sync_latch changes only on the negative duty of the cycle
-always @ (clk or clk_en_sync)
-    if (~clk) clk_en_sync_latch = clk_en_sync;
+
+ // PITON_FPGA_SYNTH
+
+  wire clk_en_sync;
+  reg clk_en_sync_latch;
+
+  assign clk_out = clk & clk_en_sync_latch;
+
+  synchronizer sync(
+      .clk            (clk),
+      .presyncdata    (clk_en),
+      .syncdata       (clk_en_sync)
+  );
+
+  // if possible, replace this with a native clock gate from the std cell lib
+  // clk_en_sync_latch changes only on the negative duty of the cycle
+  always @ (clk or clk_en_sync)
+      if (~clk) clk_en_sync_latch = clk_en_sync;
+
+
 
 endmodule // clk_gating_latch
 // Copyright (c) 2015 Princeton University
@@ -6259,15 +4350,15 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
 always @ (posedge clk)
+  q[SIZE-1:0]  <= din[SIZE-1:0] ;
 
-	q[SIZE-1:0]  <= (se) ? si[SIZE-1:0]  : din[SIZE-1:0] ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
 
 
 
@@ -6345,16 +4436,16 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
-// Scan-Enable dominates
 always @ (posedge clk)
+	q[SIZE-1:0]  <= ((rst) ? {SIZE{1'b0}}  : din[SIZE-1:0] );
 
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0] : ((rst) ? {SIZE{1'b0}}  : din[SIZE-1:0] );
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffr_s
@@ -6378,16 +4469,16 @@ output	[SIZE-1:0]	so ;	// scan-output
 reg 	[SIZE-1:0]	q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk)
+	q[SIZE-1:0]  <= rst_l ? din[SIZE-1:0] : {SIZE{1'b0}};
 
-	q[SIZE-1:0]  <= rst_l ? ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] ) : {SIZE{1'b0}};
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffrl_s
@@ -6460,15 +4551,15 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	q[SIZE-1:0]  <= ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) ;
 
-	q[SIZE-1:0]  <= (se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
 
 
 endmodule // dffe_s
@@ -6522,16 +4613,16 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	q[SIZE-1:0]  <= (rst ? {SIZE{1'b0}} : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
 
-//	q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0]  : (rst ? {SIZE{1'b0}} : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -6567,16 +4658,16 @@ reg 	[SIZE-1:0]	q ;
 //
 
 
-
-
-
-
 always @ (posedge clk)
+	 q[SIZE-1:0]  <= (rst_l ? ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) : {SIZE{1'b0}}) ;
 
-//	q[SIZE-1:0]  <= rst_l ? ((se) ? si[SIZE-1:0]  : ((en) ? din[SIZE-1:0] : q[SIZE-1:0])) : {SIZE{1'b0}} ;
-	q[SIZE-1:0]  <= se ? si[SIZE-1:0]  : (rst_l ? ((en) ? din[SIZE-1:0] : q[SIZE-1:0]) : {SIZE{1'b0}}) ;
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 endmodule // dffrle_s
@@ -6660,15 +4751,15 @@ output  [SIZE-1:0]      so ;    // scan-output
 reg     [SIZE-1:0]      q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk or posedge rst)
-  q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] );
+	q[SIZE-1:0]  <= rst ? {SIZE{1'b0}} : din[SIZE-1:0];
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -6693,15 +4784,15 @@ output  [SIZE-1:0]      so ;    // scan-output
 reg     [SIZE-1:0]      q ;
 
 
-
-
-
-
-// Reset dominates
 always @ (posedge clk or negedge rst_l)
-  q[SIZE-1:0]  <= (!rst_l) ? {SIZE{1'b0}} : ((se) ? si[SIZE-1:0]  : din[SIZE-1:0] );
+	q[SIZE-1:0]  <= (!rst_l) ? {SIZE{1'b0}} : din[SIZE-1:0];
 
-assign so[SIZE-1:0] = q[SIZE-1:0] ;
+
+
+
+
+
+
 
 
 
@@ -13259,6 +11350,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // HEADER 3
 
 
@@ -15989,6 +14081,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // devices.xml
 
 
@@ -16116,6 +14209,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -18364,6 +16458,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -19696,6 +17791,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -21364,6 +19460,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -22696,6 +20793,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -24947,6 +23045,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module sram_l15_tag
 (
 input wire MEMCLK,
@@ -25127,6 +23226,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -29748,6 +27848,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -32241,6 +30342,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -34490,6 +32592,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module noc1encoder(
    input wire clk,
    input wire rst_n,
@@ -34922,7 +33025,7 @@ begin
       end
       else
       begin
-         flit[55:16] = msg_address;
+         flit[((16 + 40 - 1)):(16)] = msg_address;
          flit[11] = msg_cache_type;
          flit[15:0] = msg_options_2;
       end
@@ -36752,6 +34855,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -38417,6 +36521,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -39813,6 +37918,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -42062,6 +40168,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module noc3encoder(
     input wire clk,
     input wire rst_n,
@@ -42287,7 +40394,7 @@ begin
         end
         else if (flit_state == 4'd1)
         begin
-            flit[55:16] = address;
+            flit[((16 + 40 - 1)):(16)] = address;
             flit[15:0] = msg_options_2;
             // trin: line coverage: 16B transaction apparently does not happen with the T1 core
             if (msg_data_size == 3'b111)
@@ -47088,6 +45195,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -49534,6 +47642,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -51199,6 +49308,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -53324,6 +51434,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -54989,6 +53100,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -57187,6 +55299,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -59435,6 +57548,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l15_home_encoder(
     // input wire clk,
     // input wire rst_n,
@@ -59628,6 +57742,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -62991,6 +61106,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 // Modified by Princeton University on June 9th, 2015
 /*
 * ========== Copyright Header Begin ==========================================
@@ -64970,6 +63086,7 @@ always @ *
 begin
     pipe_mshr_readreq_mshrid_s1 = noc2decoder_l15_mshrid;
     pipe_mshr_readreq_threadid_s1 = noc2decoder_l15_threadid;
+
     predecode_mshr_read_control_s1 = mshr_pipe_readres_control_s1;
     // predecode_mshr_read_address_s1 = mshr_pipe_address_s1;
     predecode_mshr_read_homeid_s1 = mshr_pipe_readres_homeid_s1;
@@ -66385,7 +64502,8 @@ begin
                 decoder_lrsc_flag_write_op_s1 = 3'd1;
                 // decoder_wmt_operation_s1 = `L15_WMT_WRITE_LRU_WAY_L1_REPL_AND_DEMAP_ENTRY;
                 decoder_wmt_read_op_s1 = 1'd1;
-                decoder_wmt_write_op_s1 = 3'd3;
+                // L1 won't save the line after an LR, so L15 should not update the wmt
+                //decoder_wmt_write_op_s1 = `L15_WMT_UPDATE_LRU_WAY_AND_DEDUP_ENTRY;
 
 
 
@@ -68530,7 +66648,7 @@ begin
             wmt_write_inval_val_s3 = 1'b1;
             // wmt_write_inval_way_s3 = flush_way_s3;
         end
-        3'd3:
+        3'd3: 
         begin
             wmt_write_val_s3 = 1'b1;
             wmt_write_index_s3 = cache_index_l1d_s3[6:0];
@@ -69425,6 +67543,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -72254,6 +70373,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 
 
+
 module l15_priority_encoder_1(
     input wire [1:0] data_in,
     output wire [0:0] data_out,
@@ -72465,6 +70585,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 //
 //
 //==================================================================================================
+
 
 
 
@@ -75050,6 +73171,380 @@ begin
             noc1buffer_l15_req_data_sent = 2'd2;
          end
       endcase
+   end
+end
+endmodule
+/*
+Copyright (c) 2015 Princeton University
+All rights reserved.
+
+Redistribution and use in source and binary forms, with or without
+modification, are permitted provided that the following conditions are met:
+    * Redistributions of source code must retain the above copyright
+      notice, this list of conditions and the following disclaimer.
+    * Redistributions in binary form must reproduce the above copyright
+      notice, this list of conditions and the following disclaimer in the
+      documentation and/or other materials provided with the distribution.
+    * Neither the name of Princeton University nor the
+      names of its contributors may be used to endorse or promote products
+      derived from this software without specific prior written permission.
+
+THIS SOFTWARE IS PROVIDED BY PRINCETON UNIVERSITY "AS IS" AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL PRINCETON UNIVERSITY BE LIABLE FOR ANY
+DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND
+ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+*/
+
+
+//==================================================================================================
+//  Filename      : rf_l15_lrsc_flag.v
+//  Created On    : 2018-11-08 18:14:58
+//  Last Modified : 
+//  Revision      :
+//  Author        : Fei Gao
+//  Company       : Princeton University
+//  Email         : feig@princeton.edu
+//
+//  Description   :
+//
+//
+//==================================================================================================
+//rf_l15_lrsc_flag.v
+
+//`timescale 1 ns / 10 ps
+//`default_nettype none
+
+
+// devices.xml
+
+module rf_l15_lrsc_flag(
+   input wire clk,
+   input wire rst_n,
+
+   input wire read_valid,
+   input wire [((10-2))-1:0] read_index,
+
+   input wire write_valid,
+   input wire [((10-2))-1:0] write_index,
+   input wire [3:0] write_mask,
+   input wire [3:0] write_data,
+
+   output wire [3:0] read_data
+   );
+
+
+
+// reg read_valid_f;
+reg [((10-2))-1:0] read_index_f;
+reg [((10-2))-1:0] write_index_f;
+reg [3:0] write_data_f;
+reg [3:0] write_mask_f;
+reg write_valid_f;
+
+reg [3:0] regfile [0:(1024/4)-1];
+
+always @ (posedge clk)
+begin
+   if (!rst_n)
+   begin
+      read_index_f <= 0;
+   end
+   else
+   if (read_valid)
+      read_index_f <= read_index;
+   else
+      read_index_f <= read_index_f;
+end
+
+// read port
+assign read_data = regfile[read_index_f];
+
+// Write port
+always @ (posedge clk)
+begin
+   write_valid_f <= write_valid;
+   if (write_valid)
+   begin
+      write_data_f <= write_data;
+      write_index_f <= write_index;
+      write_mask_f <= write_mask;
+   end
+end
+
+always @ (posedge clk)
+begin
+   if (!rst_n)
+   begin
+      regfile[0] <= 4'b0;
+regfile[1] <= 4'b0;
+regfile[2] <= 4'b0;
+regfile[3] <= 4'b0;
+regfile[4] <= 4'b0;
+regfile[5] <= 4'b0;
+regfile[6] <= 4'b0;
+regfile[7] <= 4'b0;
+regfile[8] <= 4'b0;
+regfile[9] <= 4'b0;
+regfile[10] <= 4'b0;
+regfile[11] <= 4'b0;
+regfile[12] <= 4'b0;
+regfile[13] <= 4'b0;
+regfile[14] <= 4'b0;
+regfile[15] <= 4'b0;
+regfile[16] <= 4'b0;
+regfile[17] <= 4'b0;
+regfile[18] <= 4'b0;
+regfile[19] <= 4'b0;
+regfile[20] <= 4'b0;
+regfile[21] <= 4'b0;
+regfile[22] <= 4'b0;
+regfile[23] <= 4'b0;
+regfile[24] <= 4'b0;
+regfile[25] <= 4'b0;
+regfile[26] <= 4'b0;
+regfile[27] <= 4'b0;
+regfile[28] <= 4'b0;
+regfile[29] <= 4'b0;
+regfile[30] <= 4'b0;
+regfile[31] <= 4'b0;
+regfile[32] <= 4'b0;
+regfile[33] <= 4'b0;
+regfile[34] <= 4'b0;
+regfile[35] <= 4'b0;
+regfile[36] <= 4'b0;
+regfile[37] <= 4'b0;
+regfile[38] <= 4'b0;
+regfile[39] <= 4'b0;
+regfile[40] <= 4'b0;
+regfile[41] <= 4'b0;
+regfile[42] <= 4'b0;
+regfile[43] <= 4'b0;
+regfile[44] <= 4'b0;
+regfile[45] <= 4'b0;
+regfile[46] <= 4'b0;
+regfile[47] <= 4'b0;
+regfile[48] <= 4'b0;
+regfile[49] <= 4'b0;
+regfile[50] <= 4'b0;
+regfile[51] <= 4'b0;
+regfile[52] <= 4'b0;
+regfile[53] <= 4'b0;
+regfile[54] <= 4'b0;
+regfile[55] <= 4'b0;
+regfile[56] <= 4'b0;
+regfile[57] <= 4'b0;
+regfile[58] <= 4'b0;
+regfile[59] <= 4'b0;
+regfile[60] <= 4'b0;
+regfile[61] <= 4'b0;
+regfile[62] <= 4'b0;
+regfile[63] <= 4'b0;
+regfile[64] <= 4'b0;
+regfile[65] <= 4'b0;
+regfile[66] <= 4'b0;
+regfile[67] <= 4'b0;
+regfile[68] <= 4'b0;
+regfile[69] <= 4'b0;
+regfile[70] <= 4'b0;
+regfile[71] <= 4'b0;
+regfile[72] <= 4'b0;
+regfile[73] <= 4'b0;
+regfile[74] <= 4'b0;
+regfile[75] <= 4'b0;
+regfile[76] <= 4'b0;
+regfile[77] <= 4'b0;
+regfile[78] <= 4'b0;
+regfile[79] <= 4'b0;
+regfile[80] <= 4'b0;
+regfile[81] <= 4'b0;
+regfile[82] <= 4'b0;
+regfile[83] <= 4'b0;
+regfile[84] <= 4'b0;
+regfile[85] <= 4'b0;
+regfile[86] <= 4'b0;
+regfile[87] <= 4'b0;
+regfile[88] <= 4'b0;
+regfile[89] <= 4'b0;
+regfile[90] <= 4'b0;
+regfile[91] <= 4'b0;
+regfile[92] <= 4'b0;
+regfile[93] <= 4'b0;
+regfile[94] <= 4'b0;
+regfile[95] <= 4'b0;
+regfile[96] <= 4'b0;
+regfile[97] <= 4'b0;
+regfile[98] <= 4'b0;
+regfile[99] <= 4'b0;
+regfile[100] <= 4'b0;
+regfile[101] <= 4'b0;
+regfile[102] <= 4'b0;
+regfile[103] <= 4'b0;
+regfile[104] <= 4'b0;
+regfile[105] <= 4'b0;
+regfile[106] <= 4'b0;
+regfile[107] <= 4'b0;
+regfile[108] <= 4'b0;
+regfile[109] <= 4'b0;
+regfile[110] <= 4'b0;
+regfile[111] <= 4'b0;
+regfile[112] <= 4'b0;
+regfile[113] <= 4'b0;
+regfile[114] <= 4'b0;
+regfile[115] <= 4'b0;
+regfile[116] <= 4'b0;
+regfile[117] <= 4'b0;
+regfile[118] <= 4'b0;
+regfile[119] <= 4'b0;
+regfile[120] <= 4'b0;
+regfile[121] <= 4'b0;
+regfile[122] <= 4'b0;
+regfile[123] <= 4'b0;
+regfile[124] <= 4'b0;
+regfile[125] <= 4'b0;
+regfile[126] <= 4'b0;
+regfile[127] <= 4'b0;
+regfile[128] <= 4'b0;
+regfile[129] <= 4'b0;
+regfile[130] <= 4'b0;
+regfile[131] <= 4'b0;
+regfile[132] <= 4'b0;
+regfile[133] <= 4'b0;
+regfile[134] <= 4'b0;
+regfile[135] <= 4'b0;
+regfile[136] <= 4'b0;
+regfile[137] <= 4'b0;
+regfile[138] <= 4'b0;
+regfile[139] <= 4'b0;
+regfile[140] <= 4'b0;
+regfile[141] <= 4'b0;
+regfile[142] <= 4'b0;
+regfile[143] <= 4'b0;
+regfile[144] <= 4'b0;
+regfile[145] <= 4'b0;
+regfile[146] <= 4'b0;
+regfile[147] <= 4'b0;
+regfile[148] <= 4'b0;
+regfile[149] <= 4'b0;
+regfile[150] <= 4'b0;
+regfile[151] <= 4'b0;
+regfile[152] <= 4'b0;
+regfile[153] <= 4'b0;
+regfile[154] <= 4'b0;
+regfile[155] <= 4'b0;
+regfile[156] <= 4'b0;
+regfile[157] <= 4'b0;
+regfile[158] <= 4'b0;
+regfile[159] <= 4'b0;
+regfile[160] <= 4'b0;
+regfile[161] <= 4'b0;
+regfile[162] <= 4'b0;
+regfile[163] <= 4'b0;
+regfile[164] <= 4'b0;
+regfile[165] <= 4'b0;
+regfile[166] <= 4'b0;
+regfile[167] <= 4'b0;
+regfile[168] <= 4'b0;
+regfile[169] <= 4'b0;
+regfile[170] <= 4'b0;
+regfile[171] <= 4'b0;
+regfile[172] <= 4'b0;
+regfile[173] <= 4'b0;
+regfile[174] <= 4'b0;
+regfile[175] <= 4'b0;
+regfile[176] <= 4'b0;
+regfile[177] <= 4'b0;
+regfile[178] <= 4'b0;
+regfile[179] <= 4'b0;
+regfile[180] <= 4'b0;
+regfile[181] <= 4'b0;
+regfile[182] <= 4'b0;
+regfile[183] <= 4'b0;
+regfile[184] <= 4'b0;
+regfile[185] <= 4'b0;
+regfile[186] <= 4'b0;
+regfile[187] <= 4'b0;
+regfile[188] <= 4'b0;
+regfile[189] <= 4'b0;
+regfile[190] <= 4'b0;
+regfile[191] <= 4'b0;
+regfile[192] <= 4'b0;
+regfile[193] <= 4'b0;
+regfile[194] <= 4'b0;
+regfile[195] <= 4'b0;
+regfile[196] <= 4'b0;
+regfile[197] <= 4'b0;
+regfile[198] <= 4'b0;
+regfile[199] <= 4'b0;
+regfile[200] <= 4'b0;
+regfile[201] <= 4'b0;
+regfile[202] <= 4'b0;
+regfile[203] <= 4'b0;
+regfile[204] <= 4'b0;
+regfile[205] <= 4'b0;
+regfile[206] <= 4'b0;
+regfile[207] <= 4'b0;
+regfile[208] <= 4'b0;
+regfile[209] <= 4'b0;
+regfile[210] <= 4'b0;
+regfile[211] <= 4'b0;
+regfile[212] <= 4'b0;
+regfile[213] <= 4'b0;
+regfile[214] <= 4'b0;
+regfile[215] <= 4'b0;
+regfile[216] <= 4'b0;
+regfile[217] <= 4'b0;
+regfile[218] <= 4'b0;
+regfile[219] <= 4'b0;
+regfile[220] <= 4'b0;
+regfile[221] <= 4'b0;
+regfile[222] <= 4'b0;
+regfile[223] <= 4'b0;
+regfile[224] <= 4'b0;
+regfile[225] <= 4'b0;
+regfile[226] <= 4'b0;
+regfile[227] <= 4'b0;
+regfile[228] <= 4'b0;
+regfile[229] <= 4'b0;
+regfile[230] <= 4'b0;
+regfile[231] <= 4'b0;
+regfile[232] <= 4'b0;
+regfile[233] <= 4'b0;
+regfile[234] <= 4'b0;
+regfile[235] <= 4'b0;
+regfile[236] <= 4'b0;
+regfile[237] <= 4'b0;
+regfile[238] <= 4'b0;
+regfile[239] <= 4'b0;
+regfile[240] <= 4'b0;
+regfile[241] <= 4'b0;
+regfile[242] <= 4'b0;
+regfile[243] <= 4'b0;
+regfile[244] <= 4'b0;
+regfile[245] <= 4'b0;
+regfile[246] <= 4'b0;
+regfile[247] <= 4'b0;
+regfile[248] <= 4'b0;
+regfile[249] <= 4'b0;
+regfile[250] <= 4'b0;
+regfile[251] <= 4'b0;
+regfile[252] <= 4'b0;
+regfile[253] <= 4'b0;
+regfile[254] <= 4'b0;
+regfile[255] <= 4'b0;
+
+      // regfile <= 1024'b0;
+   end
+   else
+   if (write_valid_f)
+   begin
+      // regfile[write_index] <= (write_data & write_mask) | (regfile[write_index] & ~write_mask);
+      regfile[write_index_f] <= (write_data_f & write_mask_f) | (regfile[write_index_f] & ~write_mask_f);
    end
 end
 endmodule
