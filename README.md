@@ -93,5 +93,5 @@ The floorplan json file will provide the top level module and additional informa
 
 Specific configurations include floorplan and sdc files. The current ones are:
 
-* modules/dynamic_node
-* modules/sparc_core/L1I_16384_4__L1D_8192_4
+* [modules/dynamic_node/NETWORK_2dmesh](modules/dynamic_node/NETWORK_2dmesh)
+* [modules/sparc_core/L1I_16384_4__L1D_8192_4](modules/sparc_core/L1I_16384_4__L1D_8192_4)
