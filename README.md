@@ -31,8 +31,8 @@ top level module for each pickled module, and which attributes affect each modul
 | ifu_esl_rtsm       | sparc_ifu_esl_rtsm            |                    |                    |                    |                    |                    |                    |                    |                    |
 | ifu_esl_shiftreg   | sparc_ifu_esl_shiftreg        |                    |                    |                    |                    |                    |                    |                    |                    |
 | ifu_esl_stsm       | sparc_ifu_esl_stsm            |                    |                    |                    |                    |                    |                    |                    |                    |
-| l15                | l15_wrap                      | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
-| l2                 | l2                            | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                    |                    | :heavy_check_mark: | :heavy_check_mark: |
+| l15                | l15_wrap                      | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                    | :heavy_check_mark: | :heavy_check_mark: |                    |
+| l2                 | l2                            | :heavy_check_mark: |                    |                    | :heavy_check_mark: |                    |                    |                    | :heavy_check_mark: |
 | MIAOW (GPGPU)      | neko                          | :heavy_check_mark: |                    |                    |                    |                    |                    |                    |                    |
 | pico               | picorv32                      |                    |                    |                    |                    |                    |                    |                    |                    |
 | sparc_core         | sparc_core                    | :heavy_check_mark: |                    |                    |                    | :heavy_check_mark: | :heavy_check_mark: |                    |                    |
@@ -43,6 +43,8 @@ top level module for each pickled module, and which attributes affect each modul
 | sparc_mul          | sparc_mul_top_nospu_wrap      |                    |                    |                    |                    |                    |                    |                    |                    |
 | sparc_tlu          | tlu_nospu_wrap                |                    |                    |                    |                    |                    |                    |                    |                    |
 | tile               | tile                          | :heavy_check_mark: |                    |                    | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: |
+| FFT                | fftmain                       |                    |                    |                    |                    |                    |                    |                    |                    |
+| GNG                | gng                           |                    |                    |                    |                    |                    |                    |                    |                    |
 
 ### Dynamic node top module
 The top module of dynamic node depends on the network topology:
@@ -104,9 +106,13 @@ For details on the license of the MIAOW GPGPU see [here](https://github.com/Vert
 
 For details on the license of the OpenSPARC T1 core see [here](https://github.com/PrincetonUniversity/openpiton/blob/openpiton/piton/GPLv2_License_OpenSPARCT1.txt)
 
-The Ariane RISC-V CPU is licenses under the [SolderPad Hardware License](https://github.com/pulp-platform/ariane/blob/master/LICENSE)
+The Ariane RISC-V CPU is licensed under the [SolderPad Hardware License](https://github.com/pulp-platform/ariane/blob/master/LICENSE)
 
 The PicoRV32 core is licensed under the [ISC license](http://en.wikipedia.org/wiki/ISC_license)
+
+The GNG core is licensed under [LGPL 2.1](https://www.gnu.org/licenses/old-licenses/lgpl-2.1.en.html) 
+
+The FFT core is licensed under [LGPL 3](https://www.gnu.org/licenses/lgpl-3.0.en.html)
 
 The OpenPiton project is licensed under the following 3-clause BSD license:
 
