@@ -1,15 +1,8 @@
 modules/fpu/fpu.pickle.v
-modules/chip/X_10__Y_10__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
-modules/chip/X_15__Y_15__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
 modules/chip/X_1__Y_1__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
-modules/chip/X_1__Y_1__NETWORK_xbar__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
-modules/chip/X_20__Y_20__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
-modules/chip/X_5__Y_1__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
-modules/chip/X_5__Y_1__NETWORK_xbar__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
 modules/chip/X_5__Y_5__NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/chip.pickle.v
 modules/chip_bridge/chip_bridge.pickle.v
 modules/dynamic_node_2dmesh/NETWORK_2dmesh/dynamic_node_2dmesh.pickle.v
-modules/dynamic_node_xbar/NETWORK_xbar/dynamic_node_xbar.pickle.v
 modules/fpga_bridge_rcv_32/fpga_bridge_rcv_32.pickle.v
 modules/ifu_esl/ifu_esl.pickle.v
 modules/ifu_esl_counter/ifu_esl_counter.pickle.v
@@ -20,9 +13,7 @@ modules/ifu_esl_rtsm/ifu_esl_rtsm.pickle.v
 modules/ifu_esl_shiftreg/ifu_esl_shiftreg.pickle.v
 modules/ifu_esl_stsm/ifu_esl_stsm.pickle.v
 modules/l15/NETWORK_2dmesh__L1D_8192_4__L15_8192_4/l15.pickle.v
-modules/l15/NETWORK_xbar__L1D_8192_4__L15_8192_4/l15.pickle.v
 modules/l2/NETWORK_2dmesh__L2_65536_4/l2.pickle.v
-modules/l2/NETWORK_xbar__L2_65536_4/l2.pickle.v
 modules/pico/pico.pickle.v
 modules/sparc_core/L1I_16384_4__L1D_8192_4/sparc_core.pickle.v
 modules/sparc_exu/sparc_exu.pickle.v
@@ -32,4 +23,3 @@ modules/sparc_lsu/L1D_8192_4/sparc_lsu.pickle.v
 modules/sparc_mul/sparc_mul.pickle.v
 modules/sparc_tlu/sparc_tlu.pickle.v
 modules/tile/NETWORK_2dmesh__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/tile.pickle.v
-modules/tile/NETWORK_xbar__L1D_8192_4__L1I_16384_4__L15_8192_4__L2_65536_4/tile.pickle.v
