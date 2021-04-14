@@ -1,5 +1,7 @@
 # OpenPiton Design Benchmark
 OpenPiton Design Benchmark adapted from [OpenPiton](https://github.com/PrincetonUniversity/openpiton).
+All design benchmarks were generated using [Tursi](https://github.com/PrincetonUniversity/openpiton/tree/openpiton-dev/piton/tools/src/tursi)
+
 
 ## Find out more
 
@@ -12,7 +14,7 @@ OpenPiton Design Benchmark adapted from [OpenPiton](https://github.com/Princeton
 
 ## Benchmark
 
-The following table presents which modules from OpenPiton are included on OPDB, the name of the
+The following table presents which modules from OpenPiton and other open-source projects are included on OPDB, the name of the
 top level module for each pickled module, and which attributes affect each module.
 
 
@@ -53,6 +55,13 @@ The top module of dynamic node depends on the network topology:
 |----------|----------------------------|
 | 2dmesh   | dynamic_node_top_wrap      |
 | xbar     | dynamic_node_top_wrap_para |
+
+### Core design instances
+As evaluating and presenting hundreds of design instances is impractical, we suggest to OPDB user to focus on the set of design benchmarks that map to the Piton processor.
+
+A list of the suggested pickled designs can be found at modules/piton_baseline_designs.txt
+
+Detailed information regarding the Piton processor can be found [here](https://parallel.princeton.edu/piton/#)
 
 ## Configuration naming convention
 
@@ -97,7 +106,7 @@ The floorplan json file will provide the top level module and additional informa
 
 Specific configurations include floorplan and sdc files. The current ones are:
 
-* [modules/dynamic_node/NETWORK_2dmesh](modules/dynamic_node/NETWORK_2dmesh)
+* [modules/dynamic_node_2dmesh/NETWORK_2dmesh](modules/dynamic_node_2dmesh/NETWORK_2dmesh)
 * [modules/sparc_core/L1I_16384_4__L1D_8192_4](modules/sparc_core/L1I_16384_4__L1D_8192_4)
 
 ## Licenses

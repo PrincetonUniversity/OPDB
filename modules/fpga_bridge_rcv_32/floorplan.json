@@ -1,0 +1,4 @@
+{
+ "version"  : 0.3,
+ "toplevel" : "fpga_bridge_rcv_32"
+}
