@@ -109,6 +109,16 @@ Specific configurations include floorplan and sdc files. The current ones are:
 * [modules/dynamic_node_2dmesh/NETWORK_2dmesh](modules/dynamic_node_2dmesh/NETWORK_2dmesh)
 * [modules/sparc_core/L1I_16384_4__L1D_8192_4](modules/sparc_core/L1I_16384_4__L1D_8192_4)
 
+## Original codebases
+
+ - [OpenPiton](https://github.com/PrincetonUniversity/openpiton)
+
+ - [MIAOW](https://github.com/jbalkind/miaow)
+
+ - [FFT](https://github.com/getziadz/opencores-fft)
+
+ - [GNG](https://github.com/getziadz/opencores-gng)
+
 ## Licenses
 
 For details on the license of the MIAOW GPGPU see [here](https://github.com/VerticalResearchGroup/miaow)
