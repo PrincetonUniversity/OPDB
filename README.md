@@ -59,7 +59,9 @@ The top module of dynamic node depends on the network topology:
 ### Core design instances
 As evaluating and presenting hundreds of design instances is impractical, we suggest to OPDB user to focus on the set of design benchmarks that map to the Piton processor.
 
-A list of the suggested pickled designs can be found [here](modules/piton_baseline_designs.txt)
+A list of the suggested pickled designs can be found [here](modules/piton_baseline_designs.txt).
+
+Pregenerated BLIF files for the suggested pickled designs can be found [here](baseline_BLIF.tgz).
 
 Detailed information regarding the Piton processor can be found [here](https://parallel.princeton.edu/piton/#)
 
