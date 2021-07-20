@@ -1,6 +1,6 @@
 {
   "version": "0.3",
-  "top_level": "sparc_core",
+  "toplevel": "sparc_core",
   "units": {
     "x": "cpp",
     "y": "track_height"
