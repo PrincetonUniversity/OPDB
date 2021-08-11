@@ -2,6 +2,17 @@
 OpenPiton Design Benchmark adapted from [OpenPiton](https://github.com/PrincetonUniversity/openpiton).
 All design benchmarks were generated using [Tursi](https://github.com/PrincetonUniversity/openpiton/tree/openpiton-dev/piton/tools/src/tursi)
 
+## Publication
+
+OPDB paper early access: https://ieeexplore.ieee.org/document/9481916
+
+```
+Georgios Tziantzioulis, Ting-Jung Chang, Jonathan Balkind, Jinzheng Tu, Fei Gao and David Wentzlaff,
+"OPDB: A Scalable and Modular Design Benchmark",
+IEEE Transactions on Computer-Aided Design of Integrated Circuits and Systems, doi: 10.1109/TCAD.2021.3096794.
+```
+
+
 
 ## Find out more
 
