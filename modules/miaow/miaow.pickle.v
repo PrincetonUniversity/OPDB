@@ -2650,7 +2650,9 @@ module alu_wb_queue(
      .rst(rst)
    );
 
-endmodulemodule dest_shift_reg (
+endmodule
+
+module dest_shift_reg (
  alu_vgpr_dest_data,
  alu_sgpr_dest_data,
  alu_dest_vcc_value,
@@ -5511,7 +5513,9 @@ dff d1[BITWIDTH-1:0](.q(d_out), .d(out), .clk(clk), .rst(rst));
 
 mux2_1 m1[BITWIDTH-1:0](.InA(d_out), .InB(d_in), .out(out), .S(wr_en));
   
-endmodulemodule register(out, in, wr_en, clk, rst);
+endmodule
+
+module register(out, in, wr_en, clk, rst);
 
   parameter WIDTH = 1;
   output [WIDTH-1:0] out;
@@ -12063,7 +12067,9 @@ assign out = (in == 6'd0) ? 64'h0000000000000001:
 			 (in == 6'd63) ? 64'hffffffffffffffff:
 			 64'd0;
 			 
-endmodulemodule mux4to1_6bit (
+endmodule
+
+module mux4to1_6bit (
 	out,
 	input0,
 	input1,
@@ -12484,7 +12490,9 @@ module regfile_clr(d_in,wr_en,d_out,clk,rst);
   
   mux2_1 m1[BITWIDTH-1:0](.InA(d_out),.InB(d_in),.out(out),.S(wr_en));
   
-endmodulemodule round_robin (
+endmodule
+
+module round_robin (
 	fetch_valid,
 	pc_select,
 	queue_vfull,
