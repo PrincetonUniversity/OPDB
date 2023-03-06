@@ -27314,6 +27314,9 @@ module bw_r_icd(
 
     reg [7:0]       icd_fuse_repair_value;
     reg [1:0]       icd_fuse_repair_en;
+    assign icd_fuse_repair_value = 8'bx;
+    assign icd_fuse_repair_en = 2'b0;
+
     reg [135:0]     fetdata_f;
     reg [135:0]     topdata_f;
     // reg [135:0]     fetdata_sa;
@@ -53678,9 +53681,9 @@ module sparc_ifu (/*AUTOARG*/
    wire [(6 + 5):5]          fdp_icv_index_bf;       // From fdp of sparc_ifu_fdp.v
 
    wire [1:0]           icd_fuse_repair_en;     // From icd of bw_r_icd.v
-   assign icd_fuse_repair_en = 2'b0;
+//    assign icd_fuse_repair_en = 2'b0;
    wire [7:0]           icd_fuse_repair_value;  // From icd of bw_r_icd.v
-   assign icd_fuse_repair_value = 8'bx;
+//    assign icd_fuse_repair_value = 8'bx;
    wire                 fdp_fcl_jtag_breakpoint_hit;
 
    wire [135:0]         icd_wsel_fetdata_s1;    // From icd of bw_r_icd.v

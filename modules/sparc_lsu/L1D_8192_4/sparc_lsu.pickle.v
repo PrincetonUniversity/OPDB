@@ -27253,6 +27253,8 @@ input [7:0]     fuse_dcd_repair_value;  //data in for redundancy register
 input [1:0]     fuse_dcd_repair_en;     //enable bits to turn on redundancy
 output [7:0]    dcd_fuse_repair_value;  //data out for redundancy register
 output [1:0]    dcd_fuse_repair_en;     //enable bits out
+assign dcd_fuse_repair_value = 8'b0;
+assign dcd_fuse_repair_en = 2'b0;
 
 // Memory declaration.
 wire  [(6 + 4):3]    dcache_rwaddr_e ;
@@ -50045,8 +50047,8 @@ wire                    dcache_rvld_e;          // From dctl of lsu_dctl.v
 // trin
 wire [1:0]              dcd_fuse_repair_en;     // From dcache of bw_r_dcd.v
 wire [7:0]              dcd_fuse_repair_value;  // From dcache of bw_r_dcd.v
-assign dcd_fuse_repair_en = 2'b0;
-assign dcd_fuse_repair_value = 2'b0;
+// assign dcd_fuse_repair_en = 2'b0;
+// assign dcd_fuse_repair_value = 2'b0;
 
 wire                    dctl_rst_l;             // From dctl of lsu_dctl.v
 wire                    dfill_tlb_asi_e;        // From dctl of lsu_dctl.v
